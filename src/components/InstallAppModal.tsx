@@ -103,10 +103,10 @@ export const InstallAppModal: React.FC<InstallAppModalProps> = ({
                 </span>
               </div>
               <h2 className="text-2xl font-black tracking-tight mt-1">
-                Install MarketPro Qatar
+                Install ebuymatale.lk App
               </h2>
               <p className="text-xs sm:text-sm text-white/80">
-                Get lightning-fast access, fullscreen mode & direct Qatar deal alerts.
+                Get lightning-fast access, fullscreen mode & direct Matale deal alerts.
               </p>
             </div>
           </div>
@@ -176,7 +176,7 @@ export const InstallAppModal: React.FC<InstallAppModalProps> = ({
                 <Zap className="w-4 h-4" />
               </div>
               <p className="text-xs font-bold">Instant Caching</p>
-              <p className="text-[10px] text-slate-500 dark:text-slate-400">Offline & Qatar speed</p>
+              <p className="text-[10px] text-slate-500 dark:text-slate-400">Offline & Sri Lanka speed</p>
             </div>
             <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 text-center">
               <div className="w-8 h-8 mx-auto rounded-xl bg-amber-500/10 dark:bg-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400 mb-2">
@@ -201,7 +201,7 @@ export const InstallAppModal: React.FC<InstallAppModalProps> = ({
                     className="w-full py-3.5 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 transition-all transform active:scale-95"
                   >
                     <Download className="w-5 h-5" />
-                    {isInstalling ? 'Installing MarketPro...' : 'Install MarketPro Qatar Now'}
+                    {isInstalling ? 'Installing ebuymatale.lk...' : 'Install ebuymatale.lk App Now'}
                   </button>
                 </div>
               ) : (
@@ -211,7 +211,7 @@ export const InstallAppModal: React.FC<InstallAppModalProps> = ({
                   </h4>
                   <div className="space-y-2.5">
                     <div className="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60">
-                      <span className="w-6 h-6 rounded-full bg-[#8A1538] text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                      <span className="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
                         1
                       </span>
                       <div>
@@ -222,24 +222,24 @@ export const InstallAppModal: React.FC<InstallAppModalProps> = ({
                       </div>
                     </div>
                     <div className="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60">
-                      <span className="w-6 h-6 rounded-full bg-[#8A1538] text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                      <span className="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
                         2
                       </span>
                       <div>
                         <p className="text-xs sm:text-sm font-semibold">Select "Install App" or "Add to Home screen"</p>
                         <p className="text-xs text-slate-500 dark:text-slate-400">
-                          Click <span className="font-bold text-[#8A1538] dark:text-[#E0265B]">"Install app"</span> or <span className="font-bold">"Add to Home screen"</span>.
+                          Click <span className="font-bold text-emerald-600">"Install app"</span> or <span className="font-bold">"Add to Home screen"</span>.
                         </p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60">
-                      <span className="w-6 h-6 rounded-full bg-[#8A1538] text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                      <span className="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
                         3
                       </span>
                       <div>
                         <p className="text-xs sm:text-sm font-semibold">Confirm & Enjoy</p>
                         <p className="text-xs text-slate-500 dark:text-slate-400">
-                          The MarketPro Qatar app icon will immediately appear on your phone home screen!
+                          The ebuymatale.lk app icon will immediately appear on your phone home screen!
                         </p>
                       </div>
                     </div>
@@ -293,7 +293,7 @@ export const InstallAppModal: React.FC<InstallAppModalProps> = ({
                       3. Tap "Add" in Top Right
                     </p>
                     <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                      MarketPro Qatar will be installed directly on your iOS home screen as a standalone application.
+                      ebuymatale.lk will be installed directly on your iOS home screen as a standalone application.
                     </p>
                   </div>
                 </div>
@@ -306,11 +306,11 @@ export const InstallAppModal: React.FC<InstallAppModalProps> = ({
             <div className="space-y-4 animate-fadeIn">
               <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60 space-y-3">
                 <div className="flex items-center gap-3">
-                  <Monitor className="w-6 h-6 text-[#8A1538] dark:text-[#E0265B]" />
+                  <Monitor className="w-6 h-6 text-emerald-600" />
                   <div>
                     <p className="text-sm font-bold">Install as Desktop App (Mac / Windows / Linux)</p>
                     <p className="text-xs text-slate-500 dark:text-slate-400">
-                      Use MarketPro in its own standalone window directly from your Dock or Taskbar.
+                      Use ebuymatale.lk in its own standalone window directly from your Dock or Taskbar.
                     </p>
                   </div>
                 </div>
@@ -379,8 +379,8 @@ npx cap open ios`}
         {/* Footer Actions */}
         <div className="p-4 bg-slate-50 dark:bg-slate-800/80 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-            <ShieldCheck className="w-4 h-4 text-[#8A1538] dark:text-[#E0265B]" />
-            <span>MarketPro Qatar PWA • Verified Secure</span>
+            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <span>ebuymatale.lk PWA • Verified Secure</span>
           </div>
 
           <button

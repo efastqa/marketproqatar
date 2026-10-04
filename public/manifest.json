@@ -1,13 +1,13 @@
 {
-  "name": "MarketPro Qatar - Buy & Sell Marketplace",
-  "short_name": "MarketPro Qatar",
-  "description": "Qatar's premier marketplace for cars, luxury properties, watches, electronics, jobs and services in Doha, Lusail & The Pearl.",
+  "name": "ebuymatale.lk - Matale Sri Lanka Marketplace",
+  "short_name": "ebuymatale.lk",
+  "description": "Sri Lanka's premier marketplace for lands, tea estates, certified Ceylon Blue Sapphires, houses, vehicles, with live gold rates and weather in Matale.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#0f172a",
-  "theme_color": "#8A1538",
+  "theme_color": "#059669",
   "categories": ["shopping", "business", "lifestyle"],
   "lang": "en",
   "dir": "ltr",
@@ -23,14 +23,14 @@
     {
       "name": "Post Ad (+)",
       "short_name": "Post Ad",
-      "description": "Sell your car, villa, watch or item in Qatar",
+      "description": "Sell land, gems, vehicle or property in Matale",
       "url": "/?action=post-ad",
       "icons": [{ "src": "/icon.svg", "sizes": "192x192" }]
     },
     {
-      "name": "Qatar Map Explorer",
+      "name": "Matale Map Explorer",
       "short_name": "Map",
-      "description": "Explore listings across Doha, Lusail & The Pearl",
+      "description": "Explore listings across Matale District & Knuckles",
       "url": "/?view=map",
       "icons": [{ "src": "/icon.svg", "sizes": "192x192" }]
     },
@@ -42,10 +42,10 @@
       "icons": [{ "src": "/icon.svg", "sizes": "192x192" }]
     },
     {
-      "name": "Special Plate Numbers",
-      "short_name": "Plates",
-      "description": "Browse luxury Qatar license plates",
-      "url": "/?category=plates",
+      "name": "Ceylon Gems & Land",
+      "short_name": "Gems",
+      "description": "Browse certified Ceylon Blue Sapphires & Land Plots",
+      "url": "/?category=gems",
       "icons": [{ "src": "/icon.svg", "sizes": "192x192" }]
     }
   ]

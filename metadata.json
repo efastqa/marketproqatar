@@ -1,6 +1,6 @@
 {
-  "name": "MarketPro Qatar - Buy & Sell Marketplace",
-  "description": "Qatar's premier online marketplace for buying and selling cars, properties, electronics, luxury items, and services with interactive map, real-time chat, and admin panel.",
+  "name": "ebuymatale.lk - Matale Sri Lanka Marketplace",
+  "description": "Sri Lanka's premier online marketplace for buying and selling lands, tea estates, certified Ceylon Blue Sapphires, houses, vehicles, with live gold rates and Matale weather updates.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

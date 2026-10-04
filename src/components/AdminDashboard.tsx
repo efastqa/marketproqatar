@@ -187,21 +187,21 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const handleOpenNewBanner = () => {
     const newBannerObj: CommercialBannerAd = {
       id: `banner-${Date.now()}`,
-      title: 'Qatar Luxury Showcase 2026',
-      titleAr: 'معرض قطر للفخامة والسيارات 2026',
-      subtitle: 'Exclusive VIP Offers, Warranty & Immediate Financing in Doha',
-      subtitleAr: 'عروض حصرية وضمان شامل وتمويل مباشر في الدوحة',
-      advertiserName: 'Premium Qatar Motors',
-      advertiserLogo: 'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=120&q=80',
+      title: 'Matale Prime Land & Gem Showcase 2026',
+      titleAr: '',
+      subtitle: 'Exclusive Ceylon Gems, Tea Estates & Vehicles in Matale, Sri Lanka',
+      subtitleAr: '',
+      advertiserName: 'Ceylon Heritage Lapidary',
+      advertiserLogo: '💎',
       badgeText: 'OFFICIAL SPONSOR',
-      badgeTextAr: 'راعي رسمي معتمد',
-      imageUrl: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80',
-      categoryTag: 'vehicles',
-      ctaText: 'Explore Collection',
-      ctaTextAr: 'تصفح العروض',
-      whatsappNumber: '+97477315415',
-      phone: '+97477315415',
-      location: 'Doha - Lusail City & West Bay',
+      badgeTextAr: '',
+      imageUrl: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=80',
+      categoryTag: 'gems',
+      ctaText: 'Explore Certified Gems',
+      ctaTextAr: '',
+      whatsappNumber: '0743383338',
+      phone: '0743383338',
+      location: 'Matale Town (Clock Tower / Central)',
       impressions: 12500,
       clicks: 890,
       status: 'active',
@@ -241,30 +241,30 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const handleOpenNewListing = () => {
     const newListingObj: Listing = {
       id: `list-${Date.now()}`,
-      title: 'New Qatar Premium Listing',
-      titleAr: 'إعلان قطر جديد ومميز',
-      category: 'vehicles',
-      subcategory: 'cars',
-      price: 150000,
-      currency: 'QAR',
-      location: 'Doha - The Pearl-Qatar',
+      title: 'New Matale Verified Listing',
+      titleAr: '',
+      category: 'lands',
+      subcategory: 'tea_spice_estates',
+      price: 18500000,
+      currency: 'LKR',
+      location: 'Matale Town (Clock Tower / Central)',
       coordinates: {
-        lat: 25.3713,
-        lng: 51.5516,
-        areaName: 'The Pearl-Qatar'
+        lat: 7.4675,
+        lng: 80.6234,
+        areaName: 'Matale Town'
       },
       condition: 'Brand New',
       images: [
-        'https://images.unsplash.com/photo-1594502184342-2e12f877aa73?auto=format&fit=crop&w=1200&q=80'
+        'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80'
       ],
-      description: 'Clean vehicle / property in excellent showroom condition. Qatar agency inspection verified.',
+      description: 'Clean property / gemstone in verified condition with clear legal documentation in Matale.',
       seller: {
         id: `sel-${Date.now()}`,
-        name: 'MarketPro Verified Seller',
-        nameAr: 'بائع معتمد',
-        phone: '+97477315415',
-        whatsapp: '+97477315415',
-        email: 'seller@marketpro.qa',
+        name: 'Matale Verified Merchant',
+        nameAr: '',
+        phone: '0743383338',
+        whatsapp: '0743383338',
+        email: 'info@ebuymatale.lk',
         avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
         isVerified: true,
         rating: 5.0,
@@ -366,7 +366,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-base sm:text-lg font-black text-white">
-                  MarketPro Qatar Admin Command Center
+                  ebuymatale.lk Admin Command Center
                 </h2>
                 <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold border border-emerald-500/30">
                   LIVE CONTROL
@@ -376,7 +376,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 </span>
               </div>
               <p className="text-xs text-slate-400">
-                Change default ads, update images, manage billboard banners, hero spotlight & Qatar classifieds
+                Change default ads, update images, manage billboard banners, hero spotlight & Matale classifieds
               </p>
             </div>
           </div>
@@ -478,7 +478,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 : 'text-slate-400 hover:text-white hover:bg-slate-800'
             }`}
           >
-            <ImageIcon className="w-3.5 h-3.5" /> Qatar Image Presets
+            <ImageIcon className="w-3.5 h-3.5" /> Matale Image Presets
           </button>
 
           <button
@@ -534,7 +534,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 </div>
 
                 <div className="p-4 rounded-2xl bg-slate-800/80 border border-slate-700/80">
-                  <span className="text-[11px] font-semibold text-slate-400 block">Active Qatar Listings</span>
+                  <span className="text-[11px] font-semibold text-slate-400 block">Active Matale Listings</span>
                   <div className="text-xl sm:text-2xl font-black text-white mt-1">
                     {listings.length}
                   </div>
@@ -554,12 +554,12 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 </div>
 
                 <div className="p-4 rounded-2xl bg-slate-800/80 border border-slate-700/80">
-                  <span className="text-[11px] font-semibold text-slate-400 block">Verified Qatar Sellers</span>
+                  <span className="text-[11px] font-semibold text-slate-400 block">Verified Matale Sellers</span>
                   <div className="text-xl sm:text-2xl font-black text-white mt-1">
                     {stats.verifiedSellers.toLocaleString()}
                   </div>
                   <span className="text-[10px] text-emerald-400 flex items-center gap-1 mt-1">
-                    <ShieldCheck className="w-3 h-3 text-emerald-400" /> QID checked
+                    <ShieldCheck className="w-3 h-3 text-emerald-400" /> NIC & Deed verified
                   </span>
                 </div>
               </div>
@@ -641,7 +641,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 <div>
                   <h3 className="text-sm font-black text-white flex items-center gap-2">
                     <Megaphone className="w-4 h-4 text-amber-400" />
-                    Corporate Billboard & Sponsor Banners (إعلانات البنرات والرعاة)
+                    Corporate Billboard & Sponsor Banners
                   </h3>
                   <p className="text-xs text-slate-400 mt-0.5">
                     These carousel banners appear at the top of the homepage and category sections. You can edit any details or upload custom images.
@@ -738,7 +738,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               <div className="bg-slate-800/60 p-4 rounded-2xl border border-slate-700">
                 <h3 className="text-sm font-black text-white flex items-center gap-2">
                   <Flame className="w-4 h-4 text-amber-400" />
-                  Homepage Hero Spotlight Card Editor (إعلان الصدارة في الصفحة الرئيسية)
+                  Homepage Hero Spotlight Card Editor
                 </h3>
                 <p className="text-xs text-slate-400 mt-0.5">
                   Update the featured showcase card on the homepage bento grid. You can set custom title, price, location, and upload your own image.
@@ -755,7 +755,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                         {localSpotlight.badge || 'VIP Spotlight'}
                       </span>
                       <span className="text-[11px] font-semibold text-slate-400 flex items-center gap-1">
-                        <MapPin className="w-3 h-3 text-rose-400" /> {localSpotlight.location || 'The Pearl-Qatar'}
+                        <MapPin className="w-3 h-3 text-rose-400" /> {localSpotlight.location || 'Matale Town'}
                       </span>
                     </div>
 
@@ -811,7 +811,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                           type="text"
                           value={localSpotlight.titleAr || ''}
                           onChange={(e) => setLocalSpotlight({ ...localSpotlight, titleAr: e.target.value })}
-                          placeholder="العنوان بالعربية"
+                          placeholder="Title"
                           className="w-full text-xs p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-amber-400 font-medium text-right"
                         />
                       </div>
@@ -1088,7 +1088,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                                   <button
                                     onClick={() => onApproveListing(l.id)}
                                     className="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1 shadow-sm transition-colors"
-                                    title="Verify & Publish Ad Live to Qatar Marketplace"
+                                    title="Verify & Publish Ad Live to ebuymatale.lk"
                                   >
                                     <Check className="w-3.5 h-3.5" /> Approve & Post
                                   </button>
@@ -1156,7 +1156,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               <div className="bg-slate-800/60 p-4 rounded-2xl border border-slate-700">
                 <h3 className="text-sm font-black text-white flex items-center gap-2">
                   <ImageIcon className="w-4 h-4 text-amber-400" />
-                  Qatar Curated Image Gallery Presets (مكتبة الصور الجاهزة)
+                  Matale Curated Image Gallery Presets (ඡායාරූප ගැලරිය)
                 </h3>
                 <p className="text-xs text-slate-400 mt-0.5">
                   Click on any high-resolution image to copy its URL or quickly apply it to the homepage hero spotlight.
@@ -1220,7 +1220,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-5 h-5 text-amber-400" />
-                  <span>Escrow Safe-Hold: Payouts release only after buyer in-person confirmation or 48h handover window in Qatar.</span>
+                  <span>Safe Handover: Payouts release only after buyer in-person confirmation or deed inspection window in Matale.</span>
                 </div>
               </div>
 
@@ -1308,15 +1308,15 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     </div>
 
                     <div className="pt-2 border-t border-slate-700/80 flex items-center justify-between text-xs">
-                      <span className="text-slate-400">QID Verified:</span>
-                      <strong className="text-emerald-400">Yes (Metrash2)</strong>
+                      <span className="text-slate-400">NIC & Deed Verified:</span>
+                      <strong className="text-emerald-400">Yes (Verified)</strong>
                     </div>
 
                     <button
                       onClick={() => onVerifyUser(l.seller.id)}
-                      className="w-full py-1.5 rounded-xl bg-slate-900 hover:bg-[#8A1538] text-white text-xs font-bold transition-colors"
+                      className="w-full py-1.5 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white text-xs font-bold transition-colors"
                     >
-                      {l.seller.isVerified ? 'Re-validate Seller Badge' : 'Grant Verified Qatar Badge'}
+                      {l.seller.isVerified ? 'Re-validate Seller Badge' : 'Grant Verified Seller Badge'}
                     </button>
                   </div>
                 ))}
@@ -1378,7 +1378,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     <div>
                       <h4 className="text-xs font-bold text-white flex items-center gap-1.5">
                         <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                        Require Admin Verification Before Ad Goes Live (موافقة الإدارة المسبقة قبل النشر)
+                        Require Admin Verification Before Ad Goes Live
                       </h4>
                       <p className="text-[11px] text-slate-400 mt-0.5">
                         When enabled, newly posted ads stay in <strong>Pending</strong> state until you review and click <strong>Approve & Publish</strong> in the admin panel.
@@ -1780,7 +1780,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
                 <div>
                   <label className="block text-[11px] font-semibold text-slate-300 mb-1">
-                    Location in Qatar *
+                    Location in Matale District *
                   </label>
                   <select
                     value={editingListing.location}

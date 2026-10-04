@@ -9,7 +9,7 @@ import {
   Send, 
   CheckCircle2, 
   Sparkles,
-  ExternalLink
+  Trees
 } from 'lucide-react';
 import { PLATFORM_PHONE_DISPLAY, PLATFORM_WHATSAPP_LINK } from '../data/mockData';
 
@@ -22,7 +22,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenChat }) =>
     name: '',
     email: '',
     phone: '',
-    subject: 'General Inquiry',
+    subject: 'Land & Gem Inquiry',
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
@@ -39,15 +39,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenChat }) =>
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-100 dark:bg-rose-950/60 text-[#8A1538] dark:text-rose-300 text-xs font-bold uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
             <Sparkles className="w-3.5 h-3.5" />
-            24/7 Dedicated Qatar Customer Care
+            Dedicated Matale Customer Care
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-            Get in Touch with <span className="text-[#8A1538] dark:text-rose-400">MarketPro Qatar</span>
+            Get in Touch with <span className="text-emerald-600 dark:text-emerald-400">ebuymatale.lk</span>
           </h2>
           <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-            Have questions about posting an ad, verifying your Qatar ID, or our Escrow buyer protection? We're here for you.
+            Have questions about posting a classified ad, verifying land deeds in Matale, or Ceylon gem certification? We're here for you.
           </p>
         </div>
 
@@ -55,19 +55,19 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenChat }) =>
           {/* Left Column: Direct Call & WhatsApp & Info Cards */}
           <div className="lg:col-span-5 space-y-4">
             {/* Main Phone Hotline Hero Card */}
-            <div className="p-6 rounded-3xl bg-gradient-to-br from-slate-900 via-[#700f2b] to-slate-950 text-white shadow-xl border border-rose-900/40 space-y-4 relative overflow-hidden">
-              <div className="absolute -right-10 -bottom-10 w-36 h-36 bg-rose-600/20 rounded-full blur-2xl"></div>
+            <div className="p-6 rounded-3xl bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-950 text-white shadow-xl border border-emerald-900/40 space-y-4 relative overflow-hidden">
+              <div className="absolute -right-10 -bottom-10 w-36 h-36 bg-emerald-600/20 rounded-full blur-2xl"></div>
 
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center font-bold shadow-lg shadow-amber-400/20">
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-[11px] font-bold text-rose-300 uppercase tracking-wide block">
-                    Official Qatar Helpline
+                  <span className="text-[11px] font-bold text-emerald-300 uppercase tracking-wide block">
+                    Official Matale Helpline
                   </span>
                   <a
-                    href="tel:+97477315415"
+                    href="tel:0743383338"
                     className="text-2xl font-black text-white hover:text-amber-300 transition-colors font-mono tracking-tight"
                   >
                     {PLATFORM_PHONE_DISPLAY}
@@ -76,16 +76,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenChat }) =>
               </div>
 
               <p className="text-xs text-slate-300 leading-relaxed">
-                Direct phone and WhatsApp support for all Qatar buyers and sellers. Our Doha based support team assists in both Arabic and English.
+                Direct phone and WhatsApp support for all Matale, Kandy, and Central Province buyers and sellers. Our local team assists in English, Sinhala, and Tamil.
               </p>
 
               {/* Instant Call & WhatsApp Buttons */}
               <div className="grid grid-cols-2 gap-2 pt-2">
                 <a
-                  href="tel:+97477315415"
+                  href="tel:0743383338"
                   className="py-3 px-4 rounded-xl bg-white text-slate-950 hover:bg-slate-100 font-black text-xs sm:text-sm text-center shadow-md transition-transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5"
                 >
-                  <Phone className="w-4 h-4 text-[#8A1538]" />
+                  <Phone className="w-4 h-4 text-emerald-700" />
                   Call Hotline
                 </a>
                 <a
@@ -100,166 +100,128 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenChat }) =>
               </div>
             </div>
 
-            {/* Qatar Headquarters & Details */}
-            <div className="p-5 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="p-2.5 rounded-2xl bg-rose-50 dark:bg-rose-950/40 text-[#8A1538] dark:text-rose-400 shrink-0">
-                  <MapPin className="w-5 h-5" />
+            {/* Quick Details Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-1">
+                <div className="flex items-center gap-2 text-emerald-600 font-bold">
+                  <MapPin className="w-4 h-4" />
+                  <span>Matale Office</span>
                 </div>
-                <div>
-                  <h4 className="text-xs font-bold text-slate-900 dark:text-white">Doha Headquarters</h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
-                    Al Funduq Street, West Bay Commercial District, Tower 4, 14th Floor, Doha, State of Qatar
-                  </p>
-                </div>
+                <p className="text-slate-600 dark:text-slate-400">
+                  King Street / Mandandawela, Matale, Central Province, Sri Lanka
+                </p>
               </div>
 
-              <div className="flex items-start gap-3">
-                <div className="p-2.5 rounded-2xl bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 shrink-0">
-                  <Clock className="w-5 h-5" />
+              <div className="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-1">
+                <div className="flex items-center gap-2 text-emerald-600 font-bold">
+                  <Clock className="w-4 h-4" />
+                  <span>Operating Hours</span>
                 </div>
-                <div>
-                  <h4 className="text-xs font-bold text-slate-900 dark:text-white">Customer Support Hours</h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
-                    Sun - Thu: 8:00 AM – 9:00 PM AST<br />
-                    Fri - Sat: 1:00 PM – 10:00 PM AST
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="p-2.5 rounded-2xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 shrink-0">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-slate-900 dark:text-white">Email Assistance</h4>
-                  <a href="mailto:support@marketpro.qa" className="text-xs text-[#8A1538] dark:text-rose-400 font-semibold hover:underline">
-                    support@marketpro.qa
-                  </a>
-                </div>
+                <p className="text-slate-600 dark:text-slate-400">
+                  Daily: 8:00 AM – 8:00 PM (Online 24/7)
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Interactive Support Inquiry Form */}
-          <div className="lg:col-span-7 bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+          {/* Right Column: Contact Message Form */}
+          <div className="lg:col-span-7 bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-xl">
             {submitted ? (
-              <div className="text-center py-8 space-y-4 animate-fadeIn">
-                <div className="w-16 h-16 rounded-3xl bg-emerald-500/20 text-emerald-500 flex items-center justify-center mx-auto">
-                  <CheckCircle2 className="w-10 h-10" />
+              <div className="py-12 text-center space-y-3">
+                <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
+                  <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                <h3 className="text-xl font-black text-slate-900 dark:text-white">
                   Message Sent Successfully!
                 </h3>
-                <p className="text-xs text-slate-500 max-w-md mx-auto">
-                  Thank you for reaching out to MarketPro Qatar. One of our support officers will contact you shortly at <strong className="text-slate-900 dark:text-white">{formData.phone || formData.email || '+974 77315415'}</strong>.
+                <p className="text-xs text-slate-500 max-w-sm mx-auto">
+                  Thank you! Our Matale customer support team will contact you shortly via phone or email.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="px-6 py-2.5 rounded-xl bg-[#8A1538] text-white text-xs font-bold shadow-md"
+                  className="px-6 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl"
                 >
-                  Send Another Inquiry
+                  Send Another Message
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
-                <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">
-                  Send Us a Direct Support Message
+                <h3 className="text-lg font-black text-slate-900 dark:text-white">
+                  Send Us a Direct Message
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                      Your Full Name *
+                      Your Name
                     </label>
                     <input
                       type="text"
-                      placeholder="e.g. Jassim Al-Sulaiti"
+                      required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                      className="w-full text-xs p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-[#8A1538]"
+                      placeholder="e.g. Sunil Perera"
+                      className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                      Qatar Mobile Number *
+                      Phone Number (Sri Lanka)
                     </label>
                     <input
                       type="tel"
-                      placeholder="+974 XXXX XXXX"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      required
-                      className="w-full text-xs p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-[#8A1538]"
+                      placeholder="e.g. 077 123 4567"
+                      className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="your.email@example.qa"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full text-xs p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-[#8A1538]"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                      Inquiry Category
-                    </label>
-                    <select
-                      value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full text-xs p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white"
-                    >
-                      <option value="General Inquiry">General Inquiry</option>
-                      <option value="Ad Boost & VIP Upgrade">Ad Boost & VIP Upgrade</option>
-                      <option value="Escrow & Payment Assistance">Escrow & Payment Assistance</option>
-                      <option value="QID Seller Verification">QID Seller Verification</option>
-                      <option value="Report Listing or Scam">Report Listing or Scam</option>
-                    </select>
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                    Your Message / Question *
+                    Inquiry Subject
+                  </label>
+                  <select
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  >
+                    <option value="Land & Estate Buying">Land & Estate Buying / Deed Inspection</option>
+                    <option value="Ceylon Gems Inquiries">Ceylon Blue Sapphires & Gem Certification</option>
+                    <option value="Vehicle Purchase">Vehicle Purchase & Leasing</option>
+                    <option value="Gold Rates & Bullion">Gold Rates & Jewelry Information</option>
+                    <option value="Posting an Ad">Assistance with Posting Classified Ad</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                    Your Message
                   </label>
                   <textarea
                     rows={4}
-                    placeholder="How can our Qatar customer care team assist you today?"
+                    required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    required
-                    className="w-full text-xs p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-[#8A1538]"
+                    placeholder="Describe your inquiry, property requirements, or gem specification..."
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                 </div>
 
-                <div className="flex items-center justify-between pt-2">
-                  <span className="text-xs text-slate-500 flex items-center gap-1">
-                    <ShieldCheck className="w-4 h-4 text-emerald-500" />
-                    Immediate hotline: <strong className="text-[#8A1538] dark:text-rose-400">{PLATFORM_PHONE_DISPLAY}</strong>
-                  </span>
-
-                  <button
-                    type="submit"
-                    className="py-3 px-6 rounded-2xl bg-gradient-to-r from-[#8A1538] to-rose-700 hover:from-rose-800 hover:to-rose-900 text-white font-bold text-xs sm:text-sm shadow-md flex items-center gap-2"
-                  >
-                    <Send className="w-4 h-4" /> Send Request
-                  </button>
-                </div>
+                <button
+                  type="submit"
+                  className="w-full py-3 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-lg transition-transform hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>Submit Message to ebuymatale.lk Team</span>
+                </button>
               </form>
             )}
           </div>
         </div>
+
       </div>
     </section>
   );

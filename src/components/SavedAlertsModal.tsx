@@ -56,7 +56,7 @@ export const SavedAlertsModal: React.FC<SavedAlertsModalProps> = ({
       ? `Alert for "${currentFilters.searchQuery}"`
       : currentFilters.category 
       ? `Alert for ${categories.find(c => c.id === currentFilters.category)?.name || 'Category'}`
-      : 'My Qatar Deals Alert'
+      : 'My Matale Deals Alert'
   );
   const [query, setQuery] = useState(currentFilters.searchQuery || '');
   const [category, setCategory] = useState(currentFilters.category || '');
@@ -148,7 +148,7 @@ export const SavedAlertsModal: React.FC<SavedAlertsModalProps> = ({
                 <span className="px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 text-[10px] font-black uppercase tracking-wider">
                   ⚡ Smart Alerts & Notifications
                 </span>
-                <span className="text-rose-200 text-xs hidden sm:inline">تنبيهات البحث الفورية</span>
+                
               </div>
               <h3 className="text-base sm:text-lg font-black text-white">
                 Saved Search & Deal Alerts
@@ -221,61 +221,58 @@ export const SavedAlertsModal: React.FC<SavedAlertsModalProps> = ({
                   {/* Preset Quick Start */}
                   <div className="pt-4 border-t border-slate-200 dark:border-slate-800 text-left space-y-2.5">
                     <span className="text-xs font-bold text-slate-700 dark:text-slate-300 block">
-                      ⚡ Quick One-Click Popular Qatar Alerts:
+                      ⚡ Quick One-Click Popular Matale Alerts:
                     </span>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       <button
                         onClick={() => handleApplyPreset({
-                          title: 'Toyota Land Cruiser Deals (Under 300k QAR)',
-                          query: 'Land Cruiser',
-                          category: 'vehicles',
-                          maxPrice: '300000',
-                          location: 'Doha'
+                          title: 'Certified Natural Ceylon Blue Sapphires',
+                          query: 'Sapphire',
+                          category: 'gems',
+                          location: 'All Matale District'
                         })}
-                        className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 hover:bg-rose-50 dark:hover:bg-rose-950/30 border border-slate-200 dark:border-slate-700 text-left transition-colors"
+                        className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 border border-slate-200 dark:border-slate-700 text-left transition-colors"
                       >
-                        <strong className="block text-xs font-bold text-slate-900 dark:text-white">🚘 Land Cruiser & Patrol</strong>
-                        <span className="text-[11px] text-slate-500">Under 300k QAR in Doha</span>
+                        <strong className="block text-xs font-bold text-slate-900 dark:text-white">💎 Ceylon Blue Sapphires (NGJA)</strong>
+                        <span className="text-[11px] text-slate-500">Unheated Royal Blue & Padparadscha</span>
                       </button>
 
                       <button
                         onClick={() => handleApplyPreset({
-                          title: 'Lusail & Pearl Studio Rentals',
-                          query: 'Studio',
-                          category: 'property',
-                          maxPrice: '7000',
-                          location: 'Lusail'
+                          title: 'Tea & Spice Estates in Rattota / Knuckles',
+                          query: 'Tea Estate',
+                          category: 'lands',
+                          location: 'Rattota (Tea & Spices)'
                         })}
-                        className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 hover:bg-rose-50 dark:hover:bg-rose-950/30 border border-slate-200 dark:border-slate-700 text-left transition-colors"
+                        className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 border border-slate-200 dark:border-slate-700 text-left transition-colors"
                       >
-                        <strong className="block text-xs font-bold text-slate-900 dark:text-white">🏢 Lusail / Pearl Apartments</strong>
-                        <span className="text-[11px] text-slate-500">Under 7,000 QAR/mo</span>
+                        <strong className="block text-xs font-bold text-slate-900 dark:text-white">🌱 Tea & Pepper Estates</strong>
+                        <span className="text-[11px] text-slate-500">Rattota, Knuckles foothills & clear deeds</span>
                       </button>
 
                       <button
                         onClick={() => handleApplyPreset({
-                          title: 'Rolex Luxury Watches in Qatar',
-                          query: 'Rolex',
-                          category: 'luxury',
-                          location: 'All Qatar'
+                          title: 'Residential Land Plots in Matale Town',
+                          query: 'Land',
+                          category: 'lands',
+                          location: 'Matale Town (Clock Tower / Central)'
                         })}
-                        className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 hover:bg-rose-50 dark:hover:bg-rose-950/30 border border-slate-200 dark:border-slate-700 text-left transition-colors"
+                        className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 border border-slate-200 dark:border-slate-700 text-left transition-colors"
                       >
-                        <strong className="block text-xs font-bold text-slate-900 dark:text-white">⌚ Rolex & Cartier Watches</strong>
-                        <span className="text-[11px] text-slate-500">Instant VIP notifications</span>
+                        <strong className="block text-xs font-bold text-slate-900 dark:text-white">🏡 Residential Land Plots</strong>
+                        <span className="text-[11px] text-slate-500">Aluvihare, Ukuwela & Town perches</span>
                       </button>
 
                       <button
                         onClick={() => handleApplyPreset({
-                          title: 'iPhone 16 Pro Max Deals',
-                          query: 'iPhone 16',
-                          category: 'electronics',
-                          maxPrice: '4500'
+                          title: 'Toyota Prado & Three-Wheeler Vehicles',
+                          query: 'Toyota',
+                          category: 'vehicles'
                         })}
-                        className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 hover:bg-rose-50 dark:hover:bg-rose-950/30 border border-slate-200 dark:border-slate-700 text-left transition-colors"
+                        className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 border border-slate-200 dark:border-slate-700 text-left transition-colors"
                       >
-                        <strong className="block text-xs font-bold text-slate-900 dark:text-white">📱 iPhone 16 Pro & Max</strong>
-                        <span className="text-[11px] text-slate-500">Under 4,500 QAR</span>
+                        <strong className="block text-xs font-bold text-slate-900 dark:text-white">🚗 Vehicles & Three-Wheelers</strong>
+                        <span className="text-[11px] text-slate-500">Prado TX-L, Hilux & Bajaj RE Tuk Tuks</span>
                       </button>
                     </div>
                   </div>
@@ -400,7 +397,7 @@ export const SavedAlertsModal: React.FC<SavedAlertsModalProps> = ({
             <form onSubmit={handleCreateAlert} className="space-y-4">
               <div className="space-y-1">
                 <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                  Alert Name / Title * (اسم التنبيه)
+                  Alert Name / Title * 
                 </label>
                 <input
                   type="text"
@@ -416,7 +413,7 @@ export const SavedAlertsModal: React.FC<SavedAlertsModalProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                    Keyword Search (الكلمات الدلالية)
+                    Keyword Search 
                   </label>
                   <div className="relative">
                     <input
@@ -432,14 +429,14 @@ export const SavedAlertsModal: React.FC<SavedAlertsModalProps> = ({
 
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                    Category (القسم)
+                    Category 
                   </label>
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     className="w-full text-xs p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-[#8A1538]"
                   >
-                    <option value="">All Categories (جميع الأقسام)</option>
+                    <option value="">All Categories </option>
                     {categories.map((c) => (
                       <option key={c.id} value={c.id}>
                         {c.name}
@@ -453,14 +450,14 @@ export const SavedAlertsModal: React.FC<SavedAlertsModalProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                    Location in Qatar (المنطقة)
+                    Location in Matale District (ස්ථානය)
                   </label>
                   <select
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
-                    className="w-full text-xs p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-[#8A1538]"
+                    className="w-full text-xs p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-emerald-600"
                   >
-                    <option value="">All Qatar (كل قطر)</option>
+                    <option value="">All Matale District (සමස්ත මාතලේ දිස්ත්‍රික්කය)</option>
                     {QATAR_LOCATIONS.map((loc) => (
                       <option key={loc} value={loc}>
                         {loc}
@@ -471,7 +468,7 @@ export const SavedAlertsModal: React.FC<SavedAlertsModalProps> = ({
 
                 <div className="space-y-1">
                   <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                    Min Price (QAR)
+                    Min Price (Rs. / LKR)
                   </label>
                   <input
                     type="number"
@@ -499,7 +496,7 @@ export const SavedAlertsModal: React.FC<SavedAlertsModalProps> = ({
               {/* Delivery Channels */}
               <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-3">
                 <span className="text-xs font-bold text-slate-800 dark:text-slate-200 block">
-                  Notification Delivery Preferences (طرق استلام التنبيه):
+                  Notification Delivery Preferences :
                 </span>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
@@ -552,7 +549,7 @@ export const SavedAlertsModal: React.FC<SavedAlertsModalProps> = ({
                   className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs shadow-md transition-transform hover:scale-[1.02] active:scale-[0.98] flex items-center gap-1.5"
                 >
                   <Bell className="w-4 h-4 text-slate-950" />
-                  <span>Save Alert (حفظ التنبيه)</span>
+                  <span>Save Alert</span>
                 </button>
               </div>
             </form>

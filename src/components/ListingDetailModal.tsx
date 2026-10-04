@@ -59,7 +59,7 @@ export const ListingDetailModal: React.FC<ListingDetailModalProps> = ({
   onOpenPayment,
   reviews,
   onAddReview,
-  currency = 'QAR',
+  currency = 'LKR',
   onOpenFinance,
   onOpenMetrashGuide,
   isComparing = false,
@@ -84,7 +84,7 @@ export const ListingDetailModal: React.FC<ListingDetailModalProps> = ({
     if (navigator.share) {
       navigator.share({
         title: listing.title,
-        text: `Check out ${listing.title} on MarketPro Qatar for ${listing.price.toLocaleString()} QAR!`,
+        text: `Check out ${listing.title} on ebuymatale.lk for Rs. ${listing.price.toLocaleString()}!`,
         url: window.location.href,
       }).catch(() => {});
     } else {
@@ -116,10 +116,10 @@ export const ListingDetailModal: React.FC<ListingDetailModalProps> = ({
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Salam! I am contacting you regarding your listing on MarketPro Qatar: "${listing.title}" (${listing.price.toLocaleString()} ${listing.currency}). Is it still available?`
+    `Ayubowan! I am contacting you regarding your listing on ebuymatale.lk: "${listing.title}" (Rs. ${listing.price.toLocaleString()}). Is it still available?`
   );
 
-  const isFinanceEligible = listing.category === 'vehicles' || listing.category === 'properties';
+  const isFinanceEligible = listing.category === 'vehicles' || listing.category === 'properties' || listing.category === 'lands';
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 lg:p-6 animate-fadeIn">
@@ -170,7 +170,7 @@ export const ListingDetailModal: React.FC<ListingDetailModalProps> = ({
               <button
                 onClick={() => onOpenStoryPoster(listing)}
                 className="px-2.5 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-700 dark:text-amber-300 transition-all flex items-center gap-1.5 text-xs font-bold shadow-sm"
-                title="Generate WhatsApp & Instagram Story Flyer with QR Code (بوستر واتساب)"
+                title="Generate WhatsApp & Instagram Story Flyer with QR Code"
               >
                 <QrCode className="w-4 h-4 text-amber-500 stroke-[2.5]" />
                 <span className="hidden sm:inline">QR Story Poster</span>
@@ -216,7 +216,7 @@ export const ListingDetailModal: React.FC<ListingDetailModalProps> = ({
             <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center gap-3 text-amber-600 dark:text-amber-400 text-xs animate-fadeIn">
               <Clock className="w-5 h-5 shrink-0" />
               <div>
-                <strong className="block font-bold">This listing is currently Pending Admin Verification (قيد المراجعة)</strong>
+                <strong className="block font-bold">This listing is currently Pending Admin Verification</strong>
                 <span>It is visible to you and platform administrators only. Once approved, it will be published to the public marketplace.</span>
               </div>
             </div>
@@ -295,15 +295,6 @@ export const ListingDetailModal: React.FC<ListingDetailModalProps> = ({
                 <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">
                   {listing.description}
                 </p>
-
-                {listing.descriptionAr && (
-                  <div className="mt-4 pt-3 border-t border-slate-200 dark:border-slate-700/80 text-right" dir="rtl">
-                    <p className="text-xs font-bold text-slate-500 mb-1">الوصف بالعربية:</p>
-                    <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                      {listing.descriptionAr}
-                    </p>
-                  </div>
-                )}
               </div>
 
               {/* Specifications Grid */}
@@ -343,7 +334,7 @@ export const ListingDetailModal: React.FC<ListingDetailModalProps> = ({
                       <Star className="w-5 h-5 fill-amber-400 text-amber-400" />
                       Verified Ratings & Reviews ({listingReviews.length})
                     </h3>
-                    <p className="text-xs text-slate-500">Feedback from authentic buyers in Qatar</p>
+                    <p className="text-xs text-slate-500">Feedback from verified buyers in Sri Lanka</p>
                   </div>
                   <button
                     onClick={() => setShowReviewForm(!showReviewForm)}
@@ -517,7 +508,7 @@ export const ListingDetailModal: React.FC<ListingDetailModalProps> = ({
                       className="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-sm font-extrabold shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] active:scale-[0.98]"
                     >
                       <ShieldCheck className="w-5 h-5 text-slate-950" />
-                      Buy with Escrow Protection (QNB / QPay)
+                      Buy with Escrow Protection (Bank Transfer / BOC / ComBank)
                     </button>
                   )}
 
@@ -526,13 +517,13 @@ export const ListingDetailModal: React.FC<ListingDetailModalProps> = ({
                     onClick={() => onOpenChat(listing)}
                     className="w-full py-3 px-4 rounded-2xl bg-white text-slate-950 hover:bg-slate-100 text-sm font-bold shadow-md flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] active:scale-[0.98]"
                   >
-                    <MessageSquare className="w-5 h-5 text-[#8A1538]" />
-                    Chat & Make Offer on MarketPro
+                    <MessageSquare className="w-5 h-5 text-emerald-700" />
+                    Chat & Make Offer on ebuymatale.lk
                   </button>
 
                   {/* WhatsApp Direct */}
                   <a
-                    href={`https://wa.me/97477315415?text=${whatsappMessage}`}
+                    href={`https://wa.me/94743383338?text=${whatsappMessage}`}
                     target="_blank"
                     rel="noreferrer"
                     className="w-full py-3 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold shadow-md flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98]"
@@ -543,10 +534,10 @@ export const ListingDetailModal: React.FC<ListingDetailModalProps> = ({
 
                   {/* Direct Call */}
                   <a
-                    href={`tel:+97477315415`}
+                    href={`tel:0743383338`}
                     className="w-full py-2.5 px-4 rounded-2xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center justify-center gap-2 border border-slate-700 transition-colors"
                   >
-                    <Phone className="w-4 h-4 text-rose-400" />
+                    <Phone className="w-4 h-4 text-emerald-400" />
                     Call Direct Hotline: {PLATFORM_PHONE_DISPLAY}
                   </a>
 
@@ -581,7 +572,7 @@ export const ListingDetailModal: React.FC<ListingDetailModalProps> = ({
                     <h4 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white flex items-center gap-1.5">
                       {listing.seller.name}
                       {listing.seller.isVerified && (
-                        <ShieldCheck className="w-4 h-4 text-emerald-500" title="Qatar ID Verified Seller" />
+                        <ShieldCheck className="w-4 h-4 text-emerald-500" title="Sri Lanka Verified Seller" />
                       )}
                     </h4>
                     <p className="text-xs text-slate-500">{listing.seller.location}</p>
@@ -607,30 +598,30 @@ export const ListingDetailModal: React.FC<ListingDetailModalProps> = ({
 
                 <div className="text-[11px] text-slate-500 flex items-center gap-1.5">
                   <Calendar className="w-3.5 h-3.5 text-slate-400" />
-                  {listing.seller.joinedDate}
+                  Member on ebuymatale.lk since {listing.seller.joinedDate}
                 </div>
               </div>
 
-              {/* Safety & Metrash2 Verification Advice */}
-              <div className="p-4 rounded-3xl bg-amber-500/10 border border-amber-500/30 text-amber-900 dark:text-amber-200 space-y-2">
+              {/* Safety & Legal Verification Advice */}
+              <div className="p-4 rounded-3xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-950 dark:text-emerald-200 space-y-2">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 font-bold text-xs">
-                    <Shield className="w-4 h-4 text-amber-500" />
-                    Qatar Buyer Safety & Metrash2
+                    <Shield className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                    Sri Lanka Land, Gem & Vehicle Safety
                   </div>
                   {onOpenMetrashGuide && (
                     <button
                       onClick={onOpenMetrashGuide}
-                      className="text-[11px] font-bold text-[#8A1538] dark:text-rose-400 underline flex items-center gap-1"
+                      className="text-[11px] font-bold text-emerald-700 dark:text-emerald-400 underline flex items-center gap-1"
                     >
-                      <FileCheck2 className="w-3 h-3" /> Metrash2 Guide
+                      <FileCheck2 className="w-3 h-3" /> Legal Guide
                     </button>
                   )}
                 </div>
-                <ul className="text-[11px] space-y-1 text-slate-600 dark:text-amber-100/80 list-disc pl-4">
-                  <li>Meet in safe public locations (e.g., Pearl Marina, Doha Festival City, Villaggio).</li>
-                  <li>For vehicle sales, verify registration & traffic points via Ministry of Interior (Metrash2).</li>
-                  <li>Use MarketPro Escrow to hold your money safely until items are inspected.</li>
+                <ul className="text-[11px] space-y-1 text-slate-600 dark:text-emerald-100/90 list-disc pl-4">
+                  <li><strong>Land Deeds:</strong> Verify Sinnakkara / Bim Saviya First Class deeds & 30-year Paththuwa search at Matale Land Registry.</li>
+                  <li><strong>Ceylon Gems:</strong> Always check official NGJA (National Gem & Jewellery Authority) certificate or lab testing report.</li>
+                  <li><strong>Vehicles:</strong> Inspect chassis/engine numbers and confirm original CR book before cash handover.</li>
                 </ul>
               </div>
             </div>

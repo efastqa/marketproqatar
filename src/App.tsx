@@ -42,7 +42,7 @@ import { HeroSection } from './components/HeroSection';
 import { ListingCard } from './components/ListingCard';
 import { ListingDetailModal } from './components/ListingDetailModal';
 import { PostAdModal } from './components/PostAdModal';
-import { QatarMapExplorer } from './components/QatarMapExplorer';
+import { MataleMapExplorer } from './components/MataleMapExplorer';
 import { ChatSystem } from './components/ChatSystem';
 import { AdminDashboard } from './components/AdminDashboard';
 import { PaymentModal } from './components/PaymentModal';
@@ -51,11 +51,13 @@ import { FilterSidebar } from './components/FilterSidebar';
 import { Footer } from './components/Footer';
 import { MobileBottomNav } from './components/MobileBottomNav';
 
-// Advanced Qatar Tools & Modals
+// Advanced Tools & Modals
 import { FinanceCalculatorModal } from './components/FinanceCalculatorModal';
 import { SpecialPlatesModal } from './components/SpecialPlatesModal';
 import { MarketValuationModal } from './components/MarketValuationModal';
-import { MetrashGuideModal } from './components/MetrashGuideModal';
+import { LandGemsGuideModal } from './components/LandGemsGuideModal';
+import { GoldRateModal } from './components/GoldRateModal';
+import { WeatherModal } from './components/WeatherModal';
 import { CompareModal } from './components/CompareModal';
 import { AdvertisingHubModal } from './components/AdvertisingHubModal';
 import { CommercialBannerStrip } from './components/CommercialBannerStrip';
@@ -63,7 +65,9 @@ import { AdminAuthModal, isSessionAdminAuthenticated, setSessionAdminAuthenticat
 import { InstallAppModal } from './components/InstallAppModal';
 import { StoryPosterModal } from './components/StoryPosterModal';
 import { SavedAlertsModal } from './components/SavedAlertsModal';
-import { AdPackage } from './types';
+import { AdPackage, GoldRateData, MataleWeatherData } from './types';
+import { fetchMataleWeather, FALLBACK_MATALE_WEATHER } from './services/weatherService';
+import { CURRENT_SRILANKA_GOLD_RATES } from './services/goldRateService';
 
 import { 
   SlidersHorizontal, 
@@ -84,7 +88,11 @@ import {
   TrendingUp,
   Car,
   Smartphone,
-  Download
+  Download,
+  Trees,
+  Coins,
+  CloudSun,
+  Building2
 } from 'lucide-react';
 
 export default function App() {
@@ -92,7 +100,9 @@ export default function App() {
   const [listings, setListings] = useState<Listing[]>(() => {
     const deletedIds = getLocalDeletedIds();
     try {
-      const saved = localStorage.getItem('marketpro_listings_custom');
+      // Clear legacy storage keys if present
+      localStorage.removeItem('marketpro_listings_custom');
+      const saved = localStorage.getItem('ebuymatale_live_listings');
       if (saved) {
         const parsed: Listing[] = JSON.parse(saved);
         return parsed.filter(l => !deletedIds.has(l.id));
@@ -103,7 +113,7 @@ export default function App() {
 
   const [commercialBanners, setCommercialBanners] = useState<CommercialBannerAd[]>(() => {
     try {
-      const saved = localStorage.getItem('marketpro_commercial_banners_custom');
+      const saved = localStorage.getItem('ebuymatale_commercial_banners_custom');
       if (saved) return JSON.parse(saved);
     } catch (e) {}
     return COMMERCIAL_BANNER_ADS;
@@ -111,7 +121,7 @@ export default function App() {
 
   const [heroSpotlight, setHeroSpotlight] = useState<HeroSpotlightConfig>(() => {
     try {
-      const saved = localStorage.getItem('marketpro_hero_spotlight_custom');
+      const saved = localStorage.getItem('ebuymatale_hero_spotlight_custom');
       if (saved) return JSON.parse(saved);
     } catch (e) {}
     return INITIAL_HERO_SPOTLIGHT;
@@ -119,7 +129,7 @@ export default function App() {
 
   const [platformConfig, setPlatformConfig] = useState<PlatformConfig>(() => {
     try {
-      const saved = localStorage.getItem('marketpro_platform_config_custom');
+      const saved = localStorage.getItem('ebuymatale_platform_config_custom');
       if (saved) return JSON.parse(saved);
     } catch (e) {}
     return INITIAL_PLATFORM_CONFIG;
@@ -129,7 +139,7 @@ export default function App() {
   const [conversations, setConversations] = useState<Conversation[]>(INITIAL_CONVERSATIONS);
   const [adminStats, setAdminStats] = useState<AdminStats>(INITIAL_ADMIN_STATS);
   const [transactions, setTransactions] = useState<PaymentTransaction[]>(INITIAL_TRANSACTIONS);
-  const [savedListingIds, setSavedListingIds] = useState<string[]>(['list-1', 'list-3']);
+  const [savedListingIds, setSavedListingIds] = useState<string[]>([]);
   const [compareListings, setCompareListings] = useState<Listing[]>([]);
 
   // Automatically subscribe to real-time Firestore sync
@@ -145,13 +155,13 @@ export default function App() {
   // Automatically save customizations to localStorage
   useEffect(() => {
     try {
-      localStorage.setItem('marketpro_listings_custom', JSON.stringify(listings));
+      localStorage.setItem('ebuymatale_live_listings', JSON.stringify(listings));
     } catch (e) {}
   }, [listings]);
 
   useEffect(() => {
     try {
-      localStorage.setItem('marketpro_commercial_banners_custom', JSON.stringify(commercialBanners));
+      localStorage.setItem('ebuymatale_commercial_banners_custom', JSON.stringify(commercialBanners));
     } catch (e) {}
   }, [commercialBanners]);
 
@@ -168,7 +178,24 @@ export default function App() {
   }, [platformConfig]);
 
   // Currency State
-  const [currency, setCurrency] = useState<CurrencyCode>('QAR');
+  const [currency, setCurrency] = useState<CurrencyCode>('LKR');
+
+  // Live Sri Lanka Gold Rates State
+  const [goldRates, setGoldRates] = useState<GoldRateData>(CURRENT_SRILANKA_GOLD_RATES);
+  const [isGoldModalOpen, setIsGoldModalOpen] = useState(false);
+
+  // Live Matale Weather State
+  const [weather, setWeather] = useState<MataleWeatherData>(FALLBACK_MATALE_WEATHER);
+  const [isWeatherModalOpen, setIsWeatherModalOpen] = useState(false);
+
+  // Fetch real-time weather on mount
+  useEffect(() => {
+    fetchMataleWeather()
+      .then((data) => {
+        if (data) setWeather(data);
+      })
+      .catch(() => {});
+  }, []);
 
   // Filters State
   const [filters, setFilters] = useState<FilterState>({
@@ -195,7 +222,7 @@ export default function App() {
   const [isPaymentOpen, setIsPaymentOpen] = useState(false);
   const [paymentListing, setPaymentListing] = useState<Listing | null>(null);
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<'all' | 'vip' | 'map' | 'motors' | 'properties'>('all');
+  const [activeTab, setActiveTab] = useState<'all' | 'lands' | 'gems' | 'properties' | 'motors' | 'vip' | 'map'>('all');
 
   // Advanced Tools Modal State
   const [isFinanceOpen, setIsFinanceOpen] = useState(false);
@@ -221,11 +248,11 @@ export default function App() {
     return [
       {
         id: 'alert-default-1',
-        title: 'Toyota Land Cruiser 2024 (Doha)',
-        query: 'Land Cruiser',
+        title: 'Toyota Prado TX-L or Hilux (Matale)',
+        query: 'Toyota',
         category: 'vehicles',
-        categoryName: 'Motors & Vehicles',
-        location: 'Doha',
+        categoryName: 'Vehicles & Motors',
+        location: 'Matale Town (Clock Tower / Central)',
         frequency: 'instant',
         channel: 'both',
         createdAt: '2 days ago',
@@ -235,15 +262,29 @@ export default function App() {
       },
       {
         id: 'alert-default-2',
-        title: 'Rolex Luxury Watches (Qatar)',
-        query: 'Rolex',
-        category: 'luxury',
-        categoryName: 'Luxury & Watches',
-        location: 'All Qatar',
+        title: 'Ceylon Blue Sapphires (Certified NGJA)',
+        query: 'Sapphire',
+        category: 'gems',
+        categoryName: 'Ceylon Gems & Jewelry',
+        location: 'Matale District',
         frequency: 'instant',
         channel: 'both',
         createdAt: '5 days ago',
-        matchCount: 2,
+        matchCount: 3,
+        isActive: true,
+        notifyOnWhatsApp: true
+      },
+      {
+        id: 'alert-default-3',
+        title: 'Tea & Spice Plantation Land (Rattota / Knuckles)',
+        query: 'Tea Estate',
+        category: 'lands',
+        categoryName: 'Lands & Plantations',
+        location: 'Rattota (Tea & Spices)',
+        frequency: 'instant',
+        channel: 'both',
+        createdAt: '1 day ago',
+        matchCount: 5,
         isActive: true,
         notifyOnWhatsApp: true
       }
@@ -380,7 +421,7 @@ export default function App() {
       }
 
       // Location
-      if (filters.location && filters.location !== 'All Qatar' && !item.location.toLowerCase().includes(filters.location.toLowerCase().split(' - ')[0])) {
+      if (filters.location && filters.location !== 'All Matale District' && !item.location.toLowerCase().includes(filters.location.toLowerCase().split(' - ')[0])) {
         return false;
       }
 
@@ -408,6 +449,12 @@ export default function App() {
       }
 
       // Tab specific quick filters
+      if (activeTab === 'lands' && item.category !== 'lands') {
+        return false;
+      }
+      if (activeTab === 'gems' && item.category !== 'gems') {
+        return false;
+      }
       if (activeTab === 'vip' && item.featuredTier !== 'vip_gold') {
         return false;
       }
@@ -472,10 +519,10 @@ export default function App() {
         listingId: listingId,
         listingTitle: `Ad Boost: ${targetListing ? targetListing.title : 'Marketplace Listing'} (${pkg.name})`,
         buyerName: 'Listing Owner',
-        sellerName: 'MarketPro Qatar Ads Portal',
+        sellerName: 'ebuymatale.lk Advertising Hub',
         amount: pkg.priceQAR,
-        currency: 'QAR',
-        method: 'QPay',
+        currency: 'LKR',
+        method: 'Card',
         status: 'completed',
         date: 'Just now'
       };
@@ -546,7 +593,7 @@ export default function App() {
             id: `msg-${Date.now()}`,
             senderId: 'current-user',
             senderName: 'You',
-            text: `Salam! I am inquiring about "${listing.title}" on MarketPro Qatar.`,
+            text: `Hello! I am inquiring about "${listing.title}" on ebuymatale.lk.`,
             timestamp: 'Just now',
             isRead: true
           }
@@ -583,7 +630,7 @@ export default function App() {
       })
     );
 
-    // Simulate instant Qatari seller reply after 2 seconds
+    // Simulate instant Matale seller reply after 2 seconds
     setTimeout(() => {
       setConversations((prev) =>
         prev.map((c) => {
@@ -593,8 +640,8 @@ export default function App() {
               senderId: c.otherUser.id,
               senderName: c.otherUser.name,
               text: isOffer 
-                ? `Thank you for your offer of ${offerAmount?.toLocaleString()} QAR. I accept! We can arrange inspection or payment via MarketPro Escrow.`
-                : `Wa Alaykum Assalam! Yes, still available in ${c.listingLocation}. You can call me directly on ${PLATFORM_PHONE_DISPLAY} or inspect in person.`,
+                ? `Thank you for your offer of Rs. ${offerAmount?.toLocaleString()}. I accept! We can arrange physical inspection in Matale or proceed with clear deed/item handover.`
+                : `Ayubowan / Hello! Yes, still available in ${c.listingLocation}. You can call me directly on ${PLATFORM_PHONE_DISPLAY} or message on WhatsApp to inspect in person.`,
               timestamp: 'Just now',
               isRead: false
             };
@@ -684,10 +731,11 @@ export default function App() {
     setHeroSpotlight(INITIAL_HERO_SPOTLIGHT);
     setPlatformConfig(INITIAL_PLATFORM_CONFIG);
     try {
+      localStorage.removeItem('ebuymatale_live_listings');
+      localStorage.removeItem('ebuymatale_commercial_banners_custom');
+      localStorage.removeItem('ebuymatale_hero_spotlight_custom');
+      localStorage.removeItem('ebuymatale_platform_config_custom');
       localStorage.removeItem('marketpro_listings_custom');
-      localStorage.removeItem('marketpro_commercial_banners_custom');
-      localStorage.removeItem('marketpro_hero_spotlight_custom');
-      localStorage.removeItem('marketpro_platform_config_custom');
     } catch (e) {}
   };
 
@@ -786,11 +834,15 @@ export default function App() {
         onOpenInstallApp={() => setIsInstallAppOpen(true)}
         onOpenSavedAlerts={() => setIsSavedAlertsOpen(true)}
         savedAlertsCount={activeAlertsCount}
+        goldRates={goldRates}
+        onOpenGoldModal={() => setIsGoldModalOpen(true)}
+        weather={weather}
+        onOpenWeatherModal={() => setIsWeatherModalOpen(true)}
       />
 
       {/* Broadcast Announcement Bar (Customizable from Admin) */}
       {platformConfig.isAnnouncementActive && platformConfig.announcementNotice && (
-        <div className="bg-gradient-to-r from-amber-500 via-[#8A1538] to-slate-950 text-white text-xs py-2 px-4 shadow-sm border-b border-amber-400/30">
+        <div className="bg-gradient-to-r from-amber-500 via-emerald-800 to-slate-950 text-white text-xs py-2 px-4 shadow-sm border-b border-amber-400/30">
           <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
             <div className="flex items-center gap-2 overflow-hidden">
               <span className="px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 font-black text-[10px] uppercase shrink-0">
@@ -811,7 +863,7 @@ export default function App() {
         </div>
       )}
 
-      {/* Hero Section with Bento Layout & Quick Qatar Tools */}
+      {/* Hero Section with Bento Layout & Matale Tools */}
       <HeroSection
         filters={filters}
         onFilterChange={handleFilterChange}
@@ -829,6 +881,8 @@ export default function App() {
         spotlightConfig={heroSpotlight}
         onOpenSavedAlerts={() => setIsSavedAlertsOpen(true)}
         savedAlertsCount={activeAlertsCount}
+        onOpenGoldModal={() => setIsGoldModalOpen(true)}
+        onOpenWeatherModal={() => setIsWeatherModalOpen(true)}
       />
 
       {/* Main Container */}
@@ -848,11 +902,55 @@ export default function App() {
               onClick={() => setActiveTab('all')}
               className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all flex items-center gap-1.5 ${
                 activeTab === 'all'
-                  ? 'bg-[#8A1538] text-white shadow-md shadow-rose-950/20'
+                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-950/20'
                   : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
               }`}
             >
-              <LayoutGrid className="w-4 h-4" /> All Qatar Listings ({listings.length})
+              <LayoutGrid className="w-4 h-4" /> All Matale Ads ({listings.length})
+            </button>
+
+            <button
+              onClick={() => setActiveTab('lands')}
+              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all flex items-center gap-1.5 ${
+                activeTab === 'lands'
+                  ? 'bg-emerald-600 text-white shadow-md'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
+              }`}
+            >
+              <Trees className="w-4 h-4" /> 🌱 Lands & Estates
+            </button>
+
+            <button
+              onClick={() => setActiveTab('gems')}
+              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all flex items-center gap-1.5 ${
+                activeTab === 'gems'
+                  ? 'bg-blue-600 text-white shadow-md'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
+              }`}
+            >
+              <Sparkles className="w-4 h-4" /> 💎 Ceylon Gems
+            </button>
+
+            <button
+              onClick={() => setActiveTab('properties')}
+              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all flex items-center gap-1.5 ${
+                activeTab === 'properties'
+                  ? 'bg-teal-600 text-white shadow-md'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
+              }`}
+            >
+              <Building2 className="w-4 h-4" /> 🏡 Houses & Plots
+            </button>
+
+            <button
+              onClick={() => setActiveTab('motors')}
+              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all flex items-center gap-1.5 ${
+                activeTab === 'motors'
+                  ? 'bg-amber-600 text-white shadow-md'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
+              }`}
+            >
+              <Car className="w-4 h-4" /> 🚗 Vehicles
             </button>
 
             <button
@@ -863,40 +961,18 @@ export default function App() {
                   : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
               }`}
             >
-              <Crown className="w-4 h-4" /> VIP Gold Featured
-            </button>
-
-            <button
-              onClick={() => setActiveTab('motors')}
-              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all flex items-center gap-1.5 ${
-                activeTab === 'motors'
-                  ? 'bg-[#8A1538] text-white shadow-md'
-                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
-              }`}
-            >
-              🚗 Qatar Motors
-            </button>
-
-            <button
-              onClick={() => setActiveTab('properties')}
-              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all flex items-center gap-1.5 ${
-                activeTab === 'properties'
-                  ? 'bg-[#8A1538] text-white shadow-md'
-                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
-              }`}
-            >
-              🏢 Real Estate
+              <Crown className="w-4 h-4" /> VIP Showcase
             </button>
 
             <button
               onClick={() => setActiveTab('map')}
               className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all flex items-center gap-1.5 ${
                 activeTab === 'map'
-                  ? 'bg-blue-600 text-white shadow-md'
+                  ? 'bg-emerald-700 text-white shadow-md'
                   : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
               }`}
             >
-              <MapIcon className="w-4 h-4" /> Interactive Qatar Map
+              <MapIcon className="w-4 h-4" /> 🗺️ Matale Map
             </button>
           </div>
 
@@ -909,7 +985,7 @@ export default function App() {
                 onChange={(e: any) => handleFilterChange({ sortBy: e.target.value })}
                 className="bg-transparent text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-none"
               >
-                <option value="newest">Newest Ads in Qatar</option>
+                <option value="newest">Newest Ads in Matale</option>
                 <option value="price_asc">Price: Low to High</option>
                 <option value="price_desc">Price: High to Low</option>
                 <option value="popular">Most Viewed</option>
@@ -918,7 +994,7 @@ export default function App() {
 
             <button
               onClick={() => setIsFilterDrawerOpen(true)}
-              className="p-2 sm:px-3 sm:py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs font-semibold flex items-center gap-1.5 text-slate-700 dark:text-slate-300 hover:text-[#8A1538]"
+              className="p-2 sm:px-3 sm:py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs font-semibold flex items-center gap-1.5 text-slate-700 dark:text-slate-300 hover:text-emerald-600"
             >
               <SlidersHorizontal className="w-4 h-4" />
               <span className="hidden sm:inline">Advanced Filters</span>
@@ -929,12 +1005,13 @@ export default function App() {
         {/* Dynamic Content: Map View or Grid View */}
         {activeTab === 'map' ? (
           <div className="space-y-6 animate-fadeIn">
-            <QatarMapExplorer
+            <MataleMapExplorer
               listings={listings}
               onSelectListing={(listing) => setSelectedListing(listing)}
               onOpenChat={(listing) => handleOpenChatWithListing(listing)}
               selectedLocation={filters.location}
               onLocationChange={(loc) => handleFilterChange({ location: loc })}
+              currency={currency}
             />
           </div>
         ) : (
@@ -942,14 +1019,14 @@ export default function App() {
           <div className="space-y-6">
             {/* Active search tag pill */}
             {(filters.searchQuery || filters.category || filters.location) && (
-              <div className="flex items-center justify-between bg-rose-50 dark:bg-rose-950/30 p-3 rounded-2xl border border-rose-200 dark:border-rose-900/50 text-xs">
-                <span className="text-[#8A1538] dark:text-rose-300 font-semibold">
-                  Showing {filteredListings.length} matching listings in {filters.location || 'All Qatar'}
+              <div className="flex items-center justify-between bg-emerald-50 dark:bg-emerald-950/30 p-3 rounded-2xl border border-emerald-200 dark:border-emerald-900/50 text-xs">
+                <span className="text-emerald-700 dark:text-emerald-300 font-semibold">
+                  Showing {filteredListings.length} matching listings in {filters.location || 'All Matale District'}
                   {filters.searchQuery && ` for "${filters.searchQuery}"`}
                 </span>
                 <button
                   onClick={() => handleFilterChange({ searchQuery: '', category: '', location: '' })}
-                  className="font-bold text-[#8A1538] dark:text-rose-400 hover:underline"
+                  className="font-bold text-emerald-600 dark:text-emerald-400 hover:underline"
                 >
                   Clear All Filters
                 </button>
@@ -957,21 +1034,71 @@ export default function App() {
             )}
 
             {filteredListings.length === 0 ? (
-              <div className="p-12 text-center bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 space-y-3">
-                <Sparkles className="w-12 h-12 text-slate-400 mx-auto" />
-                <h3 className="text-lg font-bold text-slate-800 dark:text-white">
-                  No listings found for this search in Qatar
-                </h3>
-                <p className="text-xs text-slate-500 max-w-sm mx-auto">
-                  Try adjusting your keywords, price range or municipality filter.
-                </p>
-                <button
-                  onClick={() => handleFilterChange({ searchQuery: '', category: '', location: '', minPrice: '', maxPrice: '' })}
-                  className="px-4 py-2 bg-[#8A1538] text-white text-xs font-bold rounded-xl shadow-md"
-                >
-                  Reset Filters
-                </button>
-              </div>
+              listings.length === 0 ? (
+                <div className="p-10 sm:p-14 text-center bg-gradient-to-b from-white via-emerald-50/30 to-white dark:from-slate-800 dark:via-slate-800/80 dark:to-slate-800 rounded-3xl border-2 border-dashed border-emerald-500/40 dark:border-emerald-600/40 space-y-4 shadow-sm max-w-2xl mx-auto my-6">
+                  <div className="w-16 h-16 rounded-3xl bg-emerald-600/10 dark:bg-emerald-400/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto ring-8 ring-emerald-500/10">
+                    <Sparkles className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                      Marketplace Ready for Your Ads!
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-md mx-auto mt-1">
+                      All default sample ads have been cleared. Be the first to list your lands, Ceylon gems, vehicles, or properties on <strong>ebuymatale.lk</strong>.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                    <button
+                      onClick={() => setIsPostAdOpen(true)}
+                      className="w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-emerald-600 via-teal-700 to-emerald-600 hover:from-emerald-700 hover:to-teal-800 text-white font-extrabold text-sm rounded-2xl shadow-lg shadow-emerald-950/20 flex items-center justify-center gap-2 transform active:scale-95 transition-all"
+                    >
+                      <Sparkles className="w-4 h-4 text-amber-300" />
+                      <span>Post Your First Ad Now (+)</span>
+                    </button>
+                    <a
+                      href={`https://wa.me/94743383338?text=${encodeURIComponent('Hello ebuymatale.lk! I want to publish my listing.')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto px-5 py-3 rounded-2xl bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-bold text-xs flex items-center justify-center gap-2 transition-colors"
+                    >
+                      <Phone className="w-4 h-4 text-emerald-600" />
+                      <span>WhatsApp Support (074 338 3338)</span>
+                    </a>
+                  </div>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-4 border-t border-slate-200 dark:border-slate-700/60 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center justify-center gap-1">
+                      <Trees className="w-3.5 h-3.5 text-emerald-600" /> Lands & Estates
+                    </div>
+                    <div className="flex items-center justify-center gap-1">
+                      <Sparkles className="w-3.5 h-3.5 text-blue-600" /> Ceylon Gems
+                    </div>
+                    <div className="flex items-center justify-center gap-1">
+                      <Car className="w-3.5 h-3.5 text-amber-600" /> Vehicles & Vans
+                    </div>
+                    <div className="flex items-center justify-center gap-1">
+                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" /> Free to Publish
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="p-12 text-center bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 space-y-3">
+                  <Sparkles className="w-12 h-12 text-slate-400 mx-auto" />
+                  <h3 className="text-lg font-bold text-slate-800 dark:text-white">
+                    No listings found for this search in Matale
+                  </h3>
+                  <p className="text-xs text-slate-500 max-w-sm mx-auto">
+                    Try adjusting your keywords, price range or Matale area filter.
+                  </p>
+                  <button
+                    onClick={() => handleFilterChange({ searchQuery: '', category: '', location: '', minPrice: '', maxPrice: '' })}
+                    className="px-4 py-2 bg-emerald-600 text-white text-xs font-bold rounded-xl shadow-md"
+                  >
+                    Reset Filters
+                  </button>
+                </div>
+              )
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 animate-fadeIn">
                 {filteredListings.map((listing, idx) => (
@@ -1003,15 +1130,16 @@ export default function App() {
           </div>
         )}
 
-        {/* Embedded Qatar Map Section in Home View */}
+        {/* Embedded Matale District Map Section in Home View */}
         {activeTab !== 'map' && (
           <div className="pt-8">
-            <QatarMapExplorer
+            <MataleMapExplorer
               listings={listings}
               onSelectListing={(listing) => setSelectedListing(listing)}
               onOpenChat={(listing) => handleOpenChatWithListing(listing)}
               selectedLocation={filters.location}
               onLocationChange={(loc) => handleFilterChange({ location: loc })}
+              currency={currency}
             />
           </div>
         )}
@@ -1061,24 +1189,26 @@ export default function App() {
           document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
         }}
         onOpenInstallApp={() => setIsInstallAppOpen(true)}
+        onOpenGoldModal={() => setIsGoldModalOpen(true)}
+        onOpenWeatherModal={() => setIsWeatherModalOpen(true)}
       />
 
       {/* Floating Install App Quick Banner for Mobile & Desktop (Dismissible) */}
       {!isAppInstalled && showInstallBanner && (
-        <div className="fixed bottom-16 md:bottom-6 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-40 bg-gradient-to-r from-[#8A1538] via-[#6b0f2a] to-slate-900 text-white p-3.5 sm:p-4 rounded-2xl shadow-2xl border border-amber-400/40 backdrop-blur-md flex items-center justify-between gap-3 animate-fadeIn">
+        <div className="fixed bottom-16 md:bottom-6 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-40 bg-gradient-to-r from-emerald-800 via-teal-900 to-slate-900 text-white p-3.5 sm:p-4 rounded-2xl shadow-2xl border border-amber-400/40 backdrop-blur-md flex items-center justify-between gap-3 animate-fadeIn">
           <div className="flex items-center gap-3 min-w-0">
             <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 p-1 flex items-center justify-center shrink-0 border border-amber-400/40">
-              <Smartphone className="w-5 h-5 text-[#8A1538] dark:text-rose-400" />
+              <Smartphone className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
             </div>
             <div className="min-w-0">
               <p className="text-xs font-black tracking-tight flex items-center gap-1.5 truncate">
-                <span>Install MarketPro Qatar</span>
+                <span>Install ebuymatale.lk</span>
                 <span className="text-[9px] bg-amber-400 text-slate-950 px-1.5 py-0.2 rounded font-bold uppercase">
                   APP
                 </span>
               </p>
               <p className="text-[10px] sm:text-[11px] text-white/80 line-clamp-1">
-                Fast fullscreen launch & instant Qatar deal alerts
+                Fast fullscreen launch & instant Matale deal alerts
               </p>
             </div>
           </div>
@@ -1221,15 +1351,14 @@ export default function App() {
         initialCategory={financeListing?.category}
       />
 
-      {/* 8. Qatar Special Plates & VIP Numbers Modal */}
+      {/* 8. Ceylon Gems & Prime Estates Showcase Modal */}
       <SpecialPlatesModal
         isOpen={isSpecialPlatesOpen}
         onClose={() => setIsSpecialPlatesOpen(false)}
         onContactSeller={(item) => {
           setIsSpecialPlatesOpen(false);
-          // Open WhatsApp directly
-          const text = encodeURIComponent(`Salam! Inquiring about Special Plate / VIP Number ${item.number} on MarketPro Qatar`);
-          window.open(`https://wa.me/97477315415?text=${text}`, '_blank');
+          const text = encodeURIComponent(`Hello! Inquiring about ${item.title || item.number || 'VIP Listing'} on ebuymatale.lk`);
+          window.open(`${PLATFORM_WHATSAPP_LINK}&text=${text}`, '_blank');
         }}
       />
 
@@ -1239,8 +1368,8 @@ export default function App() {
         onClose={() => setIsValuationOpen(false)}
       />
 
-      {/* 10. Metrash2 & Safe Trading Handbook Modal */}
-      <MetrashGuideModal
+      {/* 10. Land & Gems Verification Guide Modal */}
+      <LandGemsGuideModal
         isOpen={isMetrashGuideOpen}
         onClose={() => setIsMetrashGuideOpen(false)}
       />
@@ -1302,6 +1431,28 @@ export default function App() {
         categories={CATEGORIES}
         listings={listings}
         onApplyAlertFilters={handleApplyAlertFilters}
+      />
+
+      {/* 16. Live Sri Lanka Gold Rates Modal */}
+      <GoldRateModal
+        isOpen={isGoldModalOpen}
+        onClose={() => setIsGoldModalOpen(false)}
+        rates={goldRates}
+        onContactGemJewelry={() => {
+          setIsGoldModalOpen(false);
+          setActiveTab('gems');
+        }}
+      />
+
+      {/* 17. Live Matale Weather Modal */}
+      <WeatherModal
+        isOpen={isWeatherModalOpen}
+        onClose={() => setIsWeatherModalOpen(false)}
+        weather={weather}
+        onRefresh={async () => {
+          const fresh = await fetchMataleWeather();
+          if (fresh) setWeather(fresh);
+        }}
       />
 
     </div>

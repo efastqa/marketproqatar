@@ -47,7 +47,7 @@ export const ListingCard: React.FC<ListingCardProps> = ({
   onToggleCompare,
   onOpenFinance,
   onBoost,
-  currency = 'QAR',
+  currency = 'LKR',
   onOpenStoryPoster
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -68,7 +68,7 @@ export const ListingCard: React.FC<ListingCardProps> = ({
     if (navigator.share) {
       navigator.share({
         title: listing.title,
-        text: `Check out ${listing.title} on MarketPro Qatar for ${listing.price.toLocaleString()} QAR!`,
+        text: `Check out ${listing.title} on ebuymatale.lk for Rs. ${listing.price.toLocaleString()}!`,
         url: window.location.href,
       }).catch(() => {});
     } else {
@@ -78,11 +78,11 @@ export const ListingCard: React.FC<ListingCardProps> = ({
     }
   };
 
-  const whatsappUrl = `https://wa.me/97477315415?text=${encodeURIComponent(
-    `Salam! I am interested in your listing on MarketPro Qatar: "${listing.title}" for ${listing.price.toLocaleString()} ${listing.currency}`
+  const whatsappUrl = `https://wa.me/94743383338?text=${encodeURIComponent(
+    `Ayubowan! I am interested in your listing on ebuymatale.lk: "${listing.title}" for Rs. ${listing.price.toLocaleString()}`
   )}`;
 
-  const isFinanceEligible = listing.category === 'vehicles' || listing.category === 'properties';
+  const isFinanceEligible = listing.category === 'vehicles' || listing.category === 'properties' || listing.category === 'lands';
 
   return (
     <div 
@@ -91,7 +91,7 @@ export const ListingCard: React.FC<ListingCardProps> = ({
         listing.featuredTier === 'vip_gold'
           ? 'border-amber-400/80 shadow-lg shadow-amber-500/10 ring-1 ring-amber-400/50'
           : listing.isFeatured
-          ? 'border-rose-400/60 shadow-md shadow-rose-950/10'
+          ? 'border-emerald-400/60 shadow-md shadow-emerald-950/10'
           : 'border-slate-200 dark:border-slate-700/80 hover:border-slate-300 dark:hover:border-slate-600'
       }`}
     >
@@ -99,7 +99,7 @@ export const ListingCard: React.FC<ListingCardProps> = ({
       {listing.featuredTier === 'vip_gold' && (
         <div className="bg-gradient-to-r from-amber-600 via-yellow-400 to-amber-600 text-slate-950 text-[10px] font-black uppercase tracking-widest text-center py-0.5 px-3 flex items-center justify-center gap-1">
           <Sparkles className="w-3 h-3 fill-slate-950" />
-          VIP Gold Featured • قطر
+          VIP Gold Featured • ebuymatale.lk
         </div>
       )}
 
@@ -185,7 +185,7 @@ export const ListingCard: React.FC<ListingCardProps> = ({
                 onOpenStoryPoster(listing);
               }}
               className="p-2 rounded-full bg-amber-500/90 text-slate-950 hover:bg-amber-400 backdrop-blur-md transition-all shadow-md"
-              title="Generate QR Social Story Flyer (بوستر واتساب)"
+              title="Generate QR Social Story Flyer"
             >
               <QrCode className="w-3.5 h-3.5 stroke-[2.5]" />
             </button>
@@ -338,7 +338,7 @@ export const ListingCard: React.FC<ListingCardProps> = ({
                 <p className="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate flex items-center gap-1">
                   <span className="truncate">{listing.seller.name}</span>
                   {listing.seller.isVerified && (
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" title="Verified Qatar Seller" />
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" title="Verified Sri Lanka Seller" />
                   )}
                 </p>
                 <div className="flex items-center gap-1 text-[10px] text-amber-500 font-bold">

@@ -87,10 +87,10 @@ export const ChatSystem: React.FC<ChatSystemProps> = ({
   };
 
   const quickQuestions = [
-    'Salam! Is this still available?',
-    'What is your lowest price for cash?',
-    'Can we meet today at The Pearl?',
-    'Does it have official Qatar agency warranty?'
+    'Ayubowan! Is this still available in Matale?',
+    'What is your final price for immediate cash payment?',
+    'Can we arrange deed inspection or gem lab verification?',
+    'Is the price negotiable for direct buyers?'
   ];
 
   if (!isOpen) return null;
@@ -106,8 +106,8 @@ export const ChatSystem: React.FC<ChatSystemProps> = ({
           {/* Header */}
           <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
             <div>
-              <h3 className="font-bold text-slate-900 dark:text-white text-base">MarketPro Messages</h3>
-              <p className="text-[11px] text-slate-500">Live Qatar Buyer-Seller Chat</p>
+              <h3 className="font-bold text-slate-900 dark:text-white text-base">ebuymatale.lk Messages</h3>
+              <p className="text-[11px] text-slate-500">Live Matale Buyer-Seller Chat</p>
             </div>
             <button
               onClick={onClose}
@@ -195,11 +195,11 @@ export const ChatSystem: React.FC<ChatSystemProps> = ({
                       {activeConv.otherUser.name}
                     </h4>
                     {activeConv.otherUser.isVerified && (
-                      <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" title="Verified Qatar Seller" />
+                      <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" title="Verified Sri Lanka Seller" />
                     )}
                   </div>
                   <p className="text-[11px] text-slate-500 truncate">
-                    {activeConv.listingTitle} • <strong className="text-[#8A1538] dark:text-rose-400 font-bold">{activeConv.listingPrice.toLocaleString()} QAR</strong>
+                    {activeConv.listingTitle} • <strong className="text-emerald-700 dark:text-emerald-400 font-bold">Rs. {activeConv.listingPrice.toLocaleString()}</strong>
                   </p>
                 </div>
               </div>
@@ -215,11 +215,11 @@ export const ChatSystem: React.FC<ChatSystemProps> = ({
                 </button>
 
                 <a
-                  href={`https://wa.me/97477315415?text=${encodeURIComponent(`Salam from MarketPro Chat regarding ${activeConv.listingTitle}`)}`}
+                  href={`${PLATFORM_WHATSAPP_LINK}&text=${encodeURIComponent(`Hello from ebuymatale.lk Chat regarding ${activeConv.listingTitle}`)}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold"
-                  title="Open WhatsApp (+974 7731 5415)"
+                  className="p-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1"
+                  title={`Open WhatsApp (${PLATFORM_PHONE_DISPLAY})`}
                 >
                   <Phone className="w-4 h-4" />
                 </a>
@@ -234,12 +234,12 @@ export const ChatSystem: React.FC<ChatSystemProps> = ({
             </div>
 
             {/* Messages Feed */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-[radial-gradient(#8a153808_1px,transparent_1px)] [background-size:16px_16px]">
+            <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-[radial-gradient(#05966908_1px,transparent_1px)] [background-size:16px_16px]">
               {/* Trust Badge */}
               <div className="text-center my-2">
                 <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-[10px] text-slate-500 font-medium">
                   <ShieldCheck className="w-3 h-3 text-emerald-500" />
-                  Never transfer money outside MarketPro Escrow or before physical inspection in Qatar.
+                  Always inspect deeds, gems and vehicles in person in Matale before making full payments.
                 </span>
               </div>
 
@@ -328,9 +328,9 @@ export const ChatSystem: React.FC<ChatSystemProps> = ({
           </div>
         ) : (
           <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-slate-400">
-            <Sparkles className="w-12 h-12 text-[#8A1538] mb-2" />
+            <Sparkles className="w-12 h-12 text-emerald-600 mb-2" />
             <h4 className="font-bold text-slate-700 dark:text-slate-300 text-base">Select a conversation</h4>
-            <p className="text-xs text-slate-500 mt-1">Start chatting with sellers and buyers in Qatar</p>
+            <p className="text-xs text-slate-500 mt-1">Start chatting with sellers and buyers in Matale, Sri Lanka</p>
           </div>
         )}
 
@@ -345,7 +345,7 @@ export const ChatSystem: React.FC<ChatSystemProps> = ({
               <div>
                 <h3 className="font-black text-slate-900 dark:text-white text-base">Make a Cash Offer</h3>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  Original listing price: <strong className="text-[#8A1538] dark:text-rose-400">{activeConv.listingPrice.toLocaleString()} QAR</strong>
+                  Original listing price: <strong className="text-emerald-700 dark:text-emerald-400">Rs. {activeConv.listingPrice.toLocaleString()}</strong>
                 </p>
               </div>
 

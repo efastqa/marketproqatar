@@ -54,7 +54,7 @@ export const CompareModal: React.FC<CompareModalProps> = ({
                 Side-by-Side Listing Comparison
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400">
-                Comparing {compareListings.length} items side-by-side in Qatar Marketplace
+                Comparing {compareListings.length} items side-by-side on ebuymatale.lk
               </p>
             </div>
           </div>
@@ -121,11 +121,11 @@ export const CompareModal: React.FC<CompareModalProps> = ({
                                 onSelectListing(listing);
                                 onClose();
                               }}
-                              className="text-xs font-black text-slate-900 dark:text-white line-clamp-2 hover:text-[#8A1538] cursor-pointer"
+                              className="text-xs font-black text-slate-900 dark:text-white line-clamp-2 hover:text-emerald-600 cursor-pointer"
                             >
                               {listing.title}
                             </h4>
-                            <div className="mt-1 text-base font-black text-[#8A1538] dark:text-rose-400">
+                            <div className="mt-1 text-base font-black text-emerald-600 dark:text-emerald-400">
                               {formatPriceWithCurrency(listing.price, currency)}
                             </div>
                           </div>
@@ -141,7 +141,7 @@ export const CompareModal: React.FC<CompareModalProps> = ({
                               <MessageSquare className="w-3 h-3" /> Chat
                             </button>
                             <a
-                              href={`${PLATFORM_WHATSAPP_LINK}&text=Salam,%20I%20am%20inquiring%20about%20"${listing.title}"`}
+                              href={`${PLATFORM_WHATSAPP_LINK}&text=Ayubowan,%20I%20am%20inquiring%20about%20"${listing.title}"`}
                               target="_blank"
                               rel="noreferrer"
                               className="py-1.5 px-2.5 rounded-xl bg-emerald-600 text-white text-[11px] font-bold flex items-center justify-center"
@@ -168,10 +168,10 @@ export const CompareModal: React.FC<CompareModalProps> = ({
 
                   {/* Location */}
                   <tr>
-                    <td className="p-3 font-bold text-slate-500">Qatar Location</td>
+                    <td className="p-3 font-bold text-slate-500">Matale Location</td>
                     {compareListings.map((l) => (
                       <td key={l.id} className="p-3 text-slate-700 dark:text-slate-300 flex items-center gap-1 font-medium">
-                        <MapPin className="w-3.5 h-3.5 text-[#8A1538] dark:text-rose-400 shrink-0" />
+                        <MapPin className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                         <span>{l.location}</span>
                       </td>
                     ))}
@@ -191,7 +191,7 @@ export const CompareModal: React.FC<CompareModalProps> = ({
 
                   {/* Escrow Eligible */}
                   <tr>
-                    <td className="p-3 font-bold text-slate-500">MarketPro Escrow Guarantee</td>
+                    <td className="p-3 font-bold text-slate-500">Buyer Protection Guarantee</td>
                     {compareListings.map((l) => (
                       <td key={l.id} className="p-3">
                         {l.escrowEligible ? (
@@ -209,7 +209,7 @@ export const CompareModal: React.FC<CompareModalProps> = ({
 
                   {/* Delivery Available */}
                   <tr>
-                    <td className="p-3 font-bold text-slate-500">Qatar Delivery</td>
+                    <td className="p-3 font-bold text-slate-500">Delivery / Handover</td>
                     {compareListings.map((l) => (
                       <td key={l.id} className="p-3">
                         {l.deliveryAvailable ? (

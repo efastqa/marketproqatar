@@ -52,23 +52,23 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
   platformConfig
 }) => {
   const [step, setStep] = useState<1 | 2 | 3>(1);
-  const [category, setCategory] = useState('vehicles');
-  const [subcategory, setSubcategory] = useState('suvs');
+  const [category, setCategory] = useState('lands');
+  const [subcategory, setSubcategory] = useState('tea_spice_estates');
   const [title, setTitle] = useState('');
   const [titleAr, setTitleAr] = useState('');
   const [price, setPrice] = useState('');
-  const [location, setLocation] = useState(currentUser?.location || 'Doha - The Pearl-Qatar');
+  const [location, setLocation] = useState(currentUser?.location || 'Matale Town (Clock Tower / Central)');
   const [condition, setCondition] = useState<'Brand New' | 'Like New' | 'Gently Used' | 'Used'>('Like New');
   const [description, setDescription] = useState('');
   const [isNegotiable, setIsNegotiable] = useState(true);
-  const [sellerName, setSellerName] = useState(currentUser?.name || 'Qatar Seller');
+  const [sellerName, setSellerName] = useState(currentUser?.name || 'Matale Seller');
   const [sellerPhone, setSellerPhone] = useState(currentUser?.phone || PLATFORM_PHONE);
   const [selectedPlan, setSelectedPlan] = useState<'standard' | 'featured' | 'vip_gold'>(initialPlan);
   const [paymentMethod, setPaymentMethod] = useState<'QPay' | 'ApplePay' | 'QNB' | 'NAPS_Debit'>('QPay');
 
   // Multi-image upload state
   const [images, setImages] = useState<string[]>([
-    'https://images.unsplash.com/photo-1594502184342-2e12f877aa73?auto=format&fit=crop&w=1200&q=80'
+    'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80'
   ]);
   const [isDragging, setIsDragging] = useState(false);
   const [customUrlInput, setCustomUrlInput] = useState('');
@@ -90,36 +90,33 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
 
   // Sample image gallery choices for quick preset selection
   const categoryPresets: Record<string, string[]> = {
+    lands: [
+      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?auto=format&fit=crop&w=1200&q=80'
+    ],
+    gems: [
+      'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=80'
+    ],
     vehicles: [
       'https://images.unsplash.com/photo-1594502184342-2e12f877aa73?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=80'
     ],
-    realestate: [
-      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=80',
+    properties: [
       'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80'
+    ],
+    agriculture: [
+      'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=1200&q=80'
     ],
     electronics: [
       'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=80'
-    ],
-    luxury: [
-      'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=80'
-    ],
-    yachts: [
-      'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80'
-    ],
-    furniture: [
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80'
     ]
   };
 
@@ -211,11 +208,11 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
       category,
       subcategory,
       price: parseFloat(price) || 0,
-      currency: 'QAR',
+      currency: 'LKR',
       location,
       coordinates: {
-        lat: 25.37,
-        lng: 51.54,
+        lat: 7.4675,
+        lng: 80.6234,
         areaName: location
       },
       condition,
@@ -223,10 +220,10 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
       description: description || 'No description provided.',
       seller: {
         id: currentUser ? currentUser.id : 'current-user-seller',
-        name: currentUser ? currentUser.name : (sellerName || 'Qatar MarketPro User'),
+        name: currentUser ? currentUser.name : (sellerName || 'Matale Seller'),
         phone: currentUser ? currentUser.phone : sellerPhone,
         whatsapp: currentUser ? (currentUser.whatsapp || currentUser.phone) : sellerPhone,
-        email: currentUser ? currentUser.email : 'user@marketpro.qa',
+        email: currentUser ? currentUser.email : 'user@ebuymatale.lk',
         avatar: currentUser ? currentUser.avatar : 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80',
         isVerified: true,
         isSuperSeller: selectedPlan === 'vip_gold' || currentUser?.accountType === 'dealer_business',
@@ -284,13 +281,13 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-fadeIn">
       <div className="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden my-auto">
         {/* Header */}
-        <div className="p-4 sm:p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-gradient-to-r from-slate-900 via-[#700f2b] to-slate-900 text-white">
+        <div className="p-4 sm:p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white">
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-wider text-rose-300">
-              Post Your Ad in Qatar
+            <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+              Post Your Ad in Matale, Sri Lanka
             </span>
             <h3 className="text-lg font-black text-white">
-              Sell on MarketPro Qatar (سوق قطر)
+              Sell on ebuymatale.lk (මාතලේ දැන්වීම්)
             </h3>
           </div>
           <button
@@ -355,10 +352,10 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
                     ⏳ Submitted for Admin Verification
                   </span>
                   <h3 className="text-xl font-black text-slate-900 dark:text-white">
-                    Your Ad is Under Review (قيد المراجعة والتدقيق)
+                    Your Ad is Under Review (සත්‍යාපනය වෙමින් පවතී)
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-md mx-auto leading-relaxed">
-                    Thank you! To maintain high trust in Qatar, our admin team verifies every ad before it goes live. You will receive a notification and it will be visible on the marketplace as soon as approved.
+                    Thank you! To maintain high trust in Matale and across Sri Lanka, our admin team verifies every ad before it goes live. You will receive a notification and it will be visible on the marketplace as soon as approved.
                   </p>
                 </div>
 
@@ -369,7 +366,7 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-500">Price:</span>
-                    <strong className="text-[#8A1538] dark:text-rose-400 font-bold">{parseFloat(price || '0').toLocaleString()} QAR</strong>
+                    <strong className="text-emerald-700 dark:text-emerald-400 font-bold">Rs. {parseFloat(price || '0').toLocaleString()}</strong>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-500">Moderation Status:</span>
@@ -380,7 +377,7 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
                 <button
                   type="button"
                   onClick={handleFinishAndClose}
-                  className="w-full max-w-md py-3.5 bg-[#8A1538] hover:bg-rose-900 text-white font-bold text-sm rounded-2xl shadow-lg transition-all"
+                  className="w-full max-w-md py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-2xl shadow-lg transition-all"
                 >
                   Got It, Close Window
                 </button>
@@ -395,17 +392,17 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
                     🎉 Ad Published Live
                   </span>
                   <h3 className="text-xl font-black text-slate-900 dark:text-white">
-                    Your Ad is Now Live on MarketPro Qatar!
+                    Your Ad is Now Live on ebuymatale.lk!
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-md mx-auto">
-                    Buyers in Doha, Lusail, and all Qatar can now view your listing, contact your WhatsApp, and submit inquiries.
+                    Buyers in Matale Town, Rattota, Aluvihare, and all Sri Lanka can now view your listing, contact your WhatsApp, and submit inquiries.
                   </p>
                 </div>
 
                 <button
                   type="button"
                   onClick={handleFinishAndClose}
-                  className="w-full max-w-md py-3.5 bg-[#8A1538] hover:bg-rose-900 text-white font-bold text-sm rounded-2xl shadow-lg transition-all"
+                  className="w-full max-w-md py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-2xl shadow-lg transition-all"
                 >
                   View Listings
                 </button>
@@ -498,36 +495,22 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-1">
-                  عنوان الإعلان (بالعربية - اختياري)
-                </label>
-                <input
-                  type="text"
-                  placeholder="مثال: نيسان باترول تيتانيوم 2024 بحالة الوكالة"
-                  value={titleAr}
-                  onChange={(e) => setTitleAr(e.target.value)}
-                  dir="rtl"
-                  className="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:border-[#8A1538]"
-                />
-              </div>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-1">
-                    Price in QAR *
+                    Price in LKR (Rs.) *
                   </label>
                   <div className="relative">
                     <input
                       type="number"
-                      placeholder="e.g. 185000"
+                      placeholder="e.g. 2500000"
                       value={price}
                       onChange={(e) => setPrice(e.target.value)}
                       required
                       className="w-full p-2.5 pr-12 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-bold text-slate-900 dark:text-white"
                     />
-                    <span className="absolute right-3 top-2.5 text-xs font-bold text-[#8A1538] dark:text-rose-400">
-                      QAR
+                    <span className="absolute right-3 top-2.5 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                      Rs.
                     </span>
                   </div>
                 </div>
@@ -541,24 +524,24 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
                     onChange={(e: any) => setCondition(e.target.value)}
                     className="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white"
                   >
-                    <option value="Brand New">Brand New (جديد)</option>
-                    <option value="Like New">Like New (كالجديد)</option>
-                    <option value="Gently Used">Gently Used (مستعمل بحالة ممتازة)</option>
-                    <option value="Used">Used (مستعمل)</option>
+                    <option value="Brand New">Brand New</option>
+                    <option value="Like New">Like New</option>
+                    <option value="Gently Used">Gently Used</option>
+                    <option value="Used">Used</option>
                   </select>
                 </div>
               </div>
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-1">
-                  Location in Qatar *
+                  Location in Matale District *
                 </label>
                 <select
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   className="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white"
                 >
-                  {QATAR_LOCATIONS.filter(l => l !== 'All Qatar').map((loc) => (
+                  {QATAR_LOCATIONS.filter(l => l !== 'All Matale District').map((loc) => (
                     <option key={loc} value={loc}>
                       {loc}
                     </option>
@@ -570,8 +553,8 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
               <div className="space-y-3 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
                 <div className="flex items-center justify-between">
                   <label className="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
-                    <Camera className="w-4 h-4 text-[#8A1538] dark:text-rose-400" />
-                    <span>Upload Product Photos (صور الإعلان) *</span>
+                    <Camera className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                    <span>Upload Product Photos *</span>
                   </label>
                   <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400">
                     {images.length}/10 Photos
@@ -754,7 +737,7 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
                   </div>
                 )}
 
-                {/* Quick Qatar Stock Photo Suggestions for Category */}
+                {/* Quick Matale & Sri Lanka HD Photo Suggestions for Category */}
                 <div className="pt-2 border-t border-slate-200/60 dark:border-slate-700/60">
                   <div className="flex items-center justify-between mb-1.5">
                     <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
@@ -844,10 +827,10 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
                           <h4 className="font-bold text-sm text-slate-900 dark:text-white">Free Standard Classified</h4>
                           <span className="px-2 py-0.2 rounded bg-emerald-600 text-white text-[10px] font-black">100% FREE</span>
                         </div>
-                        <p className="text-xs text-slate-500">30 days live in Qatar • Standard search ranking • WhatsApp chat</p>
+                        <p className="text-xs text-slate-500">30 days live in Matale • Standard search ranking • WhatsApp chat</p>
                       </div>
                     </div>
-                    <span className="text-sm font-black text-emerald-600 dark:text-emerald-400">0 QAR</span>
+                    <span className="text-sm font-black text-emerald-600 dark:text-emerald-400">Rs. 0</span>
                   </div>
 
                   {/* Featured Plan */}
@@ -904,7 +887,7 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
               {selectedPlan !== 'standard' && (
                 <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-2 animate-fadeIn">
                   <span className="text-xs font-bold text-slate-800 dark:text-slate-200 block">
-                    Choose Payment Gateway (Qatar Secure Pay)
+                    Choose Payment Gateway (Sri Lanka Secure Pay)
                   </span>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     <button
@@ -912,11 +895,11 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
                       onClick={() => setPaymentMethod('QPay')}
                       className={`p-2 rounded-xl text-xs font-bold border transition-all ${
                         paymentMethod === 'QPay'
-                          ? 'border-[#8A1538] bg-rose-50 dark:bg-rose-950 text-[#8A1538] dark:text-rose-300'
+                          ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300'
                           : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
                       }`}
                     >
-                      💳 QPay Qatar
+                      💳 Visa / Mastercard
                     </button>
                     <button
                       type="button"
@@ -927,29 +910,29 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
                           : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
                       }`}
                     >
-                      🍎 Apple Pay
+                      📱 Genie / FriMi
                     </button>
                     <button
                       type="button"
                       onClick={() => setPaymentMethod('QNB')}
                       className={`p-2 rounded-xl text-xs font-bold border transition-all ${
                         paymentMethod === 'QNB'
-                          ? 'border-[#8A1538] bg-rose-50 dark:bg-rose-950 text-[#8A1538] dark:text-rose-300'
+                          ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300'
                           : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
                       }`}
                     >
-                      🏛️ QNB Direct
+                      🏛️ Bank Transfer
                     </button>
                     <button
                       type="button"
                       onClick={() => setPaymentMethod('NAPS_Debit')}
                       className={`p-2 rounded-xl text-xs font-bold border transition-all ${
                         paymentMethod === 'NAPS_Debit'
-                          ? 'border-[#8A1538] bg-rose-50 dark:bg-rose-950 text-[#8A1538] dark:text-rose-300'
+                          ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300'
                           : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
                       }`}
                     >
-                      🇶🇦 NAPS Card
+                      🇱🇰 LankaPay
                     </button>
                   </div>
                 </div>
@@ -959,11 +942,11 @@ export const PostAdModal: React.FC<PostAdModalProps> = ({
               <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs space-y-2">
                 <span className="font-bold text-slate-800 dark:text-slate-200 block">Seller Direct Verification:</span>
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-600 dark:text-slate-300">Qatar Phone & WhatsApp:</span>
-                  <strong className="text-[#8A1538] dark:text-rose-400">{sellerPhone}</strong>
+                  <span className="text-slate-600 dark:text-slate-300">Sri Lanka Phone & WhatsApp:</span>
+                  <strong className="text-emerald-700 dark:text-emerald-400">{sellerPhone}</strong>
                 </div>
                 <div className="flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400">
-                  <ShieldCheck className="w-3.5 h-3.5" /> Buyer WhatsApp inquiry and Metrash2 transfer ready.
+                  <ShieldCheck className="w-3.5 h-3.5" /> Buyer WhatsApp inquiry and clear deed/item inspection ready.
                 </div>
               </div>
 

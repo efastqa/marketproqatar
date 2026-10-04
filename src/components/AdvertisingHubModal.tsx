@@ -41,7 +41,7 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
   onSelectPackageForPost,
   userListings = [],
   onBoostListing,
-  currency = 'QAR',
+  currency = 'LKR',
 }) => {
   const [activeTab, setActiveTab] = useState<'packages' | 'commercial' | 'boost_existing' | 'guidelines'>('packages');
   const [selectedListingToBoost, setSelectedListingToBoost] = useState<string>(userListings[0]?.id || '');
@@ -50,8 +50,8 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<'QPay' | 'ApplePay' | 'QNB' | 'NAPS_Debit'>('QPay');
 
   // ROI Calculator states
-  const [calcItemType, setCalcItemType] = useState<'car' | 'property' | 'watch' | 'phone'>('car');
-  const [calcListingPrice, setCalcListingPrice] = useState<number>(185000);
+  const [calcItemType, setCalcItemType] = useState<'gem' | 'estate' | 'car' | 'property' | 'tech'>('gem');
+  const [calcListingPrice, setCalcListingPrice] = useState<number>(3500000);
   const [calcSelectedPlan, setCalcSelectedPlan] = useState<'free' | 'bump_24h' | 'featured_7d' | 'vip_gold'>('vip_gold');
 
   const handleApplyBoost = (e: React.FormEvent) => {
@@ -94,21 +94,21 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
       <div className="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-5xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden my-auto max-h-[92vh] flex flex-col">
         
         {/* Header */}
-        <div className="p-4 sm:p-6 bg-gradient-to-r from-slate-950 via-[#720e2c] to-slate-950 text-white relative flex items-center justify-between border-b border-rose-900/40">
+        <div className="p-4 sm:p-6 bg-gradient-to-r from-slate-950 via-emerald-950 to-slate-950 text-white relative flex items-center justify-between border-b border-emerald-900/40">
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-1">
               <span className="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-extrabold border border-amber-500/30 uppercase tracking-wide">
-                Qatar Marketplace Advertising
+                Matale Marketplace Advertising
               </span>
               <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30">
                 100% Free & Paid Options
               </span>
             </div>
             <h2 className="text-xl sm:text-2xl font-black tracking-tight">
-              Advertising on MarketPro Qatar (إعلانات مجانية ومدفوعة)
+              Advertising on ebuymatale.lk (දැන්වීම් ප්‍රවර්ධනය)
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
-              Post unlimited free classified ads or multiply your buyer reach with Qatar's #1 verified advertising network.
+              Post unlimited free classified ads or multiply your buyer reach with Matale's #1 verified marketplace network.
             </p>
           </div>
 
@@ -131,31 +131,31 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
             }`}
           >
             <Crown className="w-3.5 h-3.5" />
-            <span>Free vs. Paid Packages (الباقات والأسعار)</span>
+            <span>Free vs. Paid Packages</span>
           </button>
 
           <button
             onClick={() => setActiveTab('commercial')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'commercial'
-                ? 'bg-[#8A1538] text-white shadow-sm'
+                ? 'bg-emerald-600 text-white shadow-sm'
                 : 'text-slate-600 dark:text-slate-300 hover:bg-white/60 dark:hover:bg-slate-700/50'
             }`}
           >
             <Building2 className="w-3.5 h-3.5" />
-            <span>Corporate Banners & Showrooms (إعلانات الشركات)</span>
+            <span>Corporate Banners & Showrooms</span>
           </button>
 
           <button
             onClick={() => setActiveTab('boost_existing')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'boost_existing'
-                ? 'bg-[#8A1538] text-white shadow-sm'
+                ? 'bg-emerald-600 text-white shadow-sm'
                 : 'text-slate-600 dark:text-slate-300 hover:bg-white/60 dark:hover:bg-slate-700/50'
             }`}
           >
             <Zap className="w-3.5 h-3.5" />
-            <span>Boost My Active Ad (ترقية إعلانك)</span>
+            <span>Boost My Active Ad</span>
           </button>
 
           <button
@@ -167,7 +167,7 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
             }`}
           >
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>Qatar Ad Regulations (ضوابط النشر)</span>
+            <span>Sri Lanka Ad Regulations (නීති රීති)</span>
           </button>
         </div>
 
@@ -186,7 +186,7 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
                     <span>Free Classified Advertising</span>
                   </div>
                   <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
-                    Always <strong>0 QAR</strong> to publish personal items, used cars, electronics, and rental rooms in Qatar.
+                    Always <strong>Rs. 0</strong> to publish lands, gems, vehicles, and electronics in Matale.
                   </p>
                 </div>
 
@@ -206,7 +206,7 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
                     <span>Commercial & Corporate</span>
                   </div>
                   <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
-                    Dedicated dealership profiles, billboard banners, and bulk listing management for Qatari enterprises.
+                    Dedicated dealer profiles, billboard banners, and bulk listing management for Sri Lankan enterprises.
                   </p>
                 </div>
               </div>
@@ -346,14 +346,14 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
                   <div>
                     <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wide flex items-center gap-1">
-                      <Calculator className="w-3.5 h-3.5" /> Qatar Ad Visibility Estimator
+                      <Calculator className="w-3.5 h-3.5" /> Matale Ad Visibility Estimator
                     </span>
                     <h3 className="text-base font-bold text-white">
                       Simulate Views & Speed of Sale for your Item
                     </h3>
                   </div>
                   <span className="text-xs text-slate-400">
-                    Based on over 100,000+ completed Qatar transactions
+                    Based on over 25,000+ completed Matale & Sri Lanka inquiries
                   </span>
                 </div>
 
@@ -364,17 +364,17 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
                       value={calcItemType}
                       onChange={(e: any) => {
                         setCalcItemType(e.target.value);
-                        if (e.target.value === 'car') setCalcListingPrice(185000);
-                        if (e.target.value === 'property') setCalcListingPrice(2400000);
-                        if (e.target.value === 'watch') setCalcListingPrice(68000);
-                        if (e.target.value === 'phone') setCalcListingPrice(4500);
+                        if (e.target.value === 'car') setCalcListingPrice(18500000);
+                        if (e.target.value === 'property') setCalcListingPrice(35000000);
+                        if (e.target.value === 'watch') setCalcListingPrice(1200000);
+                        if (e.target.value === 'phone') setCalcListingPrice(350000);
                       }}
                       className="w-full p-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs text-white"
                     >
-                      <option value="car">🚗 Vehicle / Land Cruiser / Patrol</option>
-                      <option value="property">🏢 Property / Villa / Apartment</option>
-                      <option value="watch">⌚ Luxury Watch / Gold Jewelry</option>
-                      <option value="phone">📱 iPhone / MacBook / Tech</option>
+                      <option value="property">🌳 Land / Tea & Spice Estate</option>
+                      <option value="watch">💎 Ceylon Sapphire / Gemstone</option>
+                      <option value="car">🚗 Vehicle / Toyota Prado / Van</option>
+                      <option value="phone">📱 Smartphone / Tech Gadget</option>
                     </select>
                   </div>
 
@@ -385,15 +385,15 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
                       onChange={(e: any) => setCalcSelectedPlan(e.target.value)}
                       className="w-full p-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs text-white"
                     >
-                      <option value="free">Free Standard Listing (0 QAR)</option>
-                      <option value="bump_24h">Express 24h Bump (19 QAR)</option>
-                      <option value="featured_7d">Featured Pro 7-Day (49 QAR)</option>
-                      <option value="vip_gold">VIP Gold Spotlight 30-Day (99 QAR)</option>
+                      <option value="free">Free Standard Listing (Rs. 0)</option>
+                      <option value="bump_24h">Express 24h Bump (Rs. 1,600)</option>
+                      <option value="featured_7d">Featured Pro 7-Day (Rs. 4,200)</option>
+                      <option value="vip_gold">VIP Gold Spotlight 30-Day (Rs. 8,500)</option>
                     </select>
                   </div>
 
                   {/* Calculated Result Box */}
-                  <div className="bg-gradient-to-r from-[#8A1538]/40 to-slate-800 p-3 rounded-2xl border border-rose-900/50 flex flex-col justify-center">
+                  <div className="bg-gradient-to-r from-emerald-950/60 to-slate-800 p-3 rounded-2xl border border-emerald-800/50 flex flex-col justify-center">
                     <div className="flex items-center justify-between text-xs mb-1">
                       <span className="text-slate-300">Expected Buyer Views:</span>
                       <strong className="text-amber-400 font-black">{currentEstimates.views}</strong>
@@ -420,28 +420,28 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="space-y-1">
                     <span className="px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 text-[10px] font-bold border border-purple-500/30 uppercase">
-                      For Qatar Showrooms, Banks & Real Estate
+                      For Sri Lanka Gem Dealers, Developers & Banks
                     </span>
                     <h3 className="text-lg sm:text-xl font-black text-white">
                       Corporate Brand Advertising & Top Billboard Placement
                     </h3>
                     <p className="text-xs text-slate-300 max-w-xl">
-                      Reach over 48,000+ monthly active Qatari high-net-worth buyers looking for luxury cars, off-plan developments, and banking products.
+                      Reach over 35,000+ monthly active Sri Lankan and diaspora buyers looking for prime lands, Ceylon gems, and premium investments in Matale.
                     </p>
                   </div>
 
                   <div className="flex flex-col gap-2 shrink-0">
                     <a
-                      href={`https://wa.me/97477315415?text=${encodeURIComponent('Salam! I want to book a Corporate Billboard or Showroom ad on MarketPro Qatar')}`}
+                      href={`https://wa.me/94743383338?text=${encodeURIComponent('Ayubowan! I want to book a Prime Banner or Business Sponsor ad on ebuymatale.lk')}`}
                       target="_blank"
                       rel="noreferrer"
                       className="px-4 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md transition-colors"
                     >
                       <MessageSquare className="w-4 h-4" />
-                      <span>Chat with Ad Desk (+974 7731 5415)</span>
+                      <span>Chat with Ad Desk (074 338 3338)</span>
                     </a>
                     <a
-                      href="tel:+97477315415"
+                      href="tel:0743383338"
                       className="px-4 py-2 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs flex items-center justify-center gap-1.5 border border-white/10 transition-colors"
                     >
                       <Phone className="w-3.5 h-3.5 text-amber-400" />
@@ -451,18 +451,18 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
                 </div>
               </div>
 
-              {/* Sample Live Commercial Banners in Qatar */}
+              {/* Sample Live Commercial Banners in Matale */}
               <div>
                 <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-1.5">
-                  <Award className="w-4 h-4 text-purple-500" />
-                  <span>Current Sponsored Partner Campaigns in Qatar</span>
+                  <Award className="w-4 h-4 text-emerald-500" />
+                  <span>Current Sponsored Partner Campaigns in Matale & Sri Lanka</span>
                 </h4>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {COMMERCIAL_BANNER_ADS.map((banner) => (
                     <div
                       key={banner.id}
-                      className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 overflow-hidden shadow-md flex flex-col justify-between group hover:border-purple-500 transition-all"
+                      className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 overflow-hidden shadow-md flex flex-col justify-between group hover:border-emerald-500 transition-all"
                     >
                       <div className="relative aspect-[16/8] bg-slate-950 overflow-hidden">
                         <img
@@ -471,11 +471,11 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-                        <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-purple-600 text-white text-[10px] font-black uppercase tracking-wider">
+                        <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-black uppercase tracking-wider">
                           {banner.badgeText}
                         </span>
                         <div className="absolute bottom-2.5 left-3 right-3 text-white">
-                          <p className="text-xs font-semibold text-purple-300">{banner.advertiserName}</p>
+                          <p className="text-xs font-semibold text-emerald-300">{banner.advertiserName}</p>
                           <h5 className="text-sm font-bold truncate">{banner.title}</h5>
                         </div>
                       </div>
@@ -487,19 +487,19 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
 
                         <div className="flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-slate-100 dark:border-slate-700">
                           <span className="flex items-center gap-1">
-                            <Eye className="w-3.5 h-3.5 text-purple-500" /> {banner.impressions.toLocaleString()} views
+                            <Eye className="w-3.5 h-3.5 text-emerald-500" /> {banner.impressions.toLocaleString()} views
                           </span>
                           <span className="font-semibold text-emerald-600 dark:text-emerald-400">
-                            {banner.status === 'active' ? '● Live Across Qatar' : 'Ended'}
+                            {banner.status === 'active' ? '● Live Across Matale' : 'Ended'}
                           </span>
                         </div>
 
                         <div className="flex items-center gap-2 pt-1">
                           <a
-                            href={`https://wa.me/97477315415?text=${encodeURIComponent(`Salam! Inquiring about ${banner.title}`)}`}
+                            href={`https://wa.me/94743383338?text=${encodeURIComponent(`Ayubowan! Inquiring about ${banner.title} on ebuymatale.lk`)}`}
                             target="_blank"
                             rel="noreferrer"
-                            className="flex-1 py-2 rounded-xl bg-[#8A1538] hover:bg-rose-900 text-white font-bold text-xs text-center transition-colors"
+                            className="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs text-center transition-colors"
                           >
                             {banner.ctaText}
                           </a>
@@ -524,7 +524,7 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
                     Ad Successfully Boosted & Activated!
                   </h3>
                   <p className="text-xs text-slate-600 dark:text-slate-300 max-w-md mx-auto">
-                    Your listing is now prominently featured in Qatar search results, category headers, and on the Qatar Interactive Map.
+                    Your listing is now prominently featured in Matale search results, category headers, and on the Matale District Interactive Map.
                   </p>
                 </div>
               ) : (
@@ -550,7 +550,7 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
                       >
                         {userListings.map((l) => (
                           <option key={l.id} value={l.id}>
-                            {l.title} - {l.price.toLocaleString()} QAR ({l.location})
+                            {l.title} - Rs. {l.price.toLocaleString()} ({l.location})
                           </option>
                         ))}
                       </select>
@@ -565,9 +565,9 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
                         onChange={(e) => setSelectedBoostPackage(e.target.value)}
                         className="w-full p-3 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-900 dark:text-white"
                       >
-                        <option value="pkg-vip">👑 VIP Gold Top Ad (99 QAR - 30 Days / 10x Views)</option>
-                        <option value="pkg-featured">⭐ Featured Pro Badge (49 QAR - 7 Days / 5x Views)</option>
-                        <option value="pkg-bump">⚡ Express 24h Re-Bump (19 QAR - #1 Top Rank)</option>
+                        <option value="pkg-vip">👑 VIP Gold Top Ad (Rs. 8,500 - 30 Days / 10x Views)</option>
+                        <option value="pkg-featured">⭐ Featured Pro Badge (Rs. 4,200 - 7 Days / 5x Views)</option>
+                        <option value="pkg-bump">⚡ Express 24h Re-Bump (Rs. 1,600 - #1 Top Rank)</option>
                       </select>
                     </div>
                   </div>
@@ -575,20 +575,20 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
                   {/* Payment Method Selector */}
                   <div>
                     <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-2">
-                      3. Select Qatar Payment Gateway
+                      3. Select Sri Lanka Payment Gateway
                     </label>
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                       <button
                         type="button"
-                        onClick={() => setSelectedPaymentMethod('QPay')}
+                        onClick={() => setSelectedPaymentMethod('LankaPay')}
                         className={`p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-1 transition-all ${
-                          selectedPaymentMethod === 'QPay'
-                            ? 'border-[#8A1538] bg-rose-50 dark:bg-rose-950/40 text-[#8A1538] dark:text-rose-300 ring-2 ring-rose-500/20'
+                          selectedPaymentMethod === 'LankaPay' || selectedPaymentMethod === 'QPay'
+                            ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 ring-2 ring-emerald-500/20'
                             : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
                         }`}
                       >
-                        <span>💳 QPay Qatar</span>
-                        <span className="text-[10px] text-slate-400 font-normal">Debit & NAPS</span>
+                        <span>💳 LankaPay</span>
+                        <span className="text-[10px] text-slate-400 font-normal">All Sri Lanka Banks</span>
                       </button>
 
                       <button
@@ -606,28 +606,28 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
 
                       <button
                         type="button"
-                        onClick={() => setSelectedPaymentMethod('QNB')}
+                        onClick={() => setSelectedPaymentMethod('CommercialBank')}
                         className={`p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-1 transition-all ${
-                          selectedPaymentMethod === 'QNB'
-                            ? 'border-[#8A1538] bg-rose-50 dark:bg-rose-950/40 text-[#8A1538] dark:text-rose-300 ring-2 ring-rose-500/20'
+                          selectedPaymentMethod === 'CommercialBank' || selectedPaymentMethod === 'QNB'
+                            ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 ring-2 ring-emerald-500/20'
                             : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
                         }`}
                       >
-                        <span>🏛️ QNB Direct</span>
-                        <span className="text-[10px] text-slate-400 font-normal">QNB Card/Account</span>
+                        <span>🏛️ ComBank / BOC</span>
+                        <span className="text-[10px] text-slate-400 font-normal">Direct Online Transfer</span>
                       </button>
 
                       <button
                         type="button"
-                        onClick={() => setSelectedPaymentMethod('NAPS_Debit')}
+                        onClick={() => setSelectedPaymentMethod('Card')}
                         className={`p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-1 transition-all ${
-                          selectedPaymentMethod === 'NAPS_Debit'
-                            ? 'border-[#8A1538] bg-rose-50 dark:bg-rose-950/40 text-[#8A1538] dark:text-rose-300 ring-2 ring-rose-500/20'
+                          selectedPaymentMethod === 'Card' || selectedPaymentMethod === 'NAPS_Debit'
+                            ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 ring-2 ring-emerald-500/20'
                             : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
                         }`}
                       >
-                        <span>🇶🇦 NAPS Card</span>
-                        <span className="text-[10px] text-slate-400 font-normal">All Qatar Banks</span>
+                        <span>🇱🇰 Visa / Mastercard</span>
+                        <span className="text-[10px] text-slate-400 font-normal">Local & International</span>
                       </button>
                     </div>
                   </div>
@@ -635,12 +635,12 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full py-3.5 bg-gradient-to-r from-[#8A1538] via-rose-700 to-[#8A1538] hover:from-rose-800 hover:to-rose-900 text-white font-black text-sm rounded-2xl shadow-xl shadow-rose-950/30 flex items-center justify-center gap-2"
+                      className="w-full py-3.5 bg-gradient-to-r from-emerald-600 via-teal-700 to-emerald-600 hover:from-emerald-700 hover:to-teal-800 text-white font-black text-sm rounded-2xl shadow-xl shadow-emerald-950/30 flex items-center justify-center gap-2"
                     >
                       <Sparkles className="w-4 h-4 text-amber-400" />
                       <span>
-                        Confirm & Boost Ad with {selectedPaymentMethod} ({
-                          selectedBoostPackage === 'pkg-vip' ? '99 QAR' : selectedBoostPackage === 'pkg-featured' ? '49 QAR' : '19 QAR'
+                        Confirm & Boost Ad ({
+                          selectedBoostPackage === 'pkg-vip' ? 'Rs. 8,500' : selectedBoostPackage === 'pkg-featured' ? 'Rs. 4,200' : 'Rs. 1,600'
                         })
                       </span>
                     </button>
@@ -650,43 +650,43 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
             </div>
           )}
 
-          {/* TAB 4: QATAR ADVERTISING GUIDELINES */}
+          {/* TAB 4: SRI LANKA ADVERTISING GUIDELINES */}
           {activeTab === 'guidelines' && (
             <div className="space-y-4 text-xs text-slate-700 dark:text-slate-300">
               <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50">
                 <h4 className="font-extrabold text-slate-900 dark:text-white text-sm mb-1">
-                  Official Advertising Rules in the State of Qatar (ضوابط النشر والتجارة)
+                  Advertising & Fair Trade Standards in Sri Lanka (මාතලේ වෙළඳ නීති රීති)
                 </h4>
                 <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                  MarketPro Qatar strictly adheres to Qatar Ministry of Commerce & Industry (MOCI) laws, Law No. 8 of 2008 on Consumer Protection, and Ministry of Interior (MOI) vehicle transfer regulations.
+                  ebuymatale.lk complies with the Sri Lanka Consumer Affairs Authority (CAA) Act No. 9 of 2003, National Gem and Jewellery Authority (NGJA) regulations, and land registry title clearance standards.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-1.5">
                   <h5 className="font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Free Ads Policy
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Free Community Listings
                   </h5>
                   <p className="text-slate-500">
-                    Individual Qatar residents (QID holders) can post up to 10 free active listings at any time without fees or expiration penalties.
+                    Matale district residents and Sri Lankan sellers can post standard classified listings free of charge without upfront listing fees.
                   </p>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-1.5">
                   <h5 className="font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Metrash2 Vehicle Inspection
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Ceylon Gems & NGJA Certification
                   </h5>
                   <p className="text-slate-500">
-                    All vehicle ads require accurate chassis/VIN data or honest mileage declaration to ensure smooth ownership transfer at Fahes inspection centers.
+                    High-value Ceylon sapphires, rubies, and gemstones should state carat weight, clarity, and certified laboratory memos (NGJA, GIC, or CGL).
                   </p>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-1.5">
                   <h5 className="font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Commercial Showrooms
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Land & Estate Deeds (Sinnakkara)
                   </h5>
                   <p className="text-slate-500">
-                    Registered businesses and real estate brokers must provide their Commercial Registration (CR) number to receive the Business Pro verification badge.
+                    Land and plantation listings must specify clear deed types (Sinnakkara freehold, Bim Saviya title) and surveyed perch or acre measurements.
                   </p>
                 </div>
 
@@ -695,7 +695,7 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
                     <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Buyer Protection & Escrow
                   </h5>
                   <p className="text-slate-500">
-                    Buyers are protected against fraudulent posts. Funds are held in Qatar secure escrow until physical handover or Metrash2 transfer completion.
+                    Buyers are protected against fraudulent deals. Escrow funds remain secured until physical inspection or legal deed conveyance in Matale.
                   </p>
                 </div>
               </div>
@@ -708,7 +708,7 @@ export const AdvertisingHubModal: React.FC<AdvertisingHubModalProps> = ({
         <div className="p-4 sm:p-5 bg-slate-50 dark:bg-slate-800/60 border-t border-slate-200 dark:border-slate-700/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2 text-slate-500">
             <ShieldCheck className="w-4 h-4 text-emerald-500" />
-            <span>Secure Qatar QPay & Apple Pay Processing with 24/7 Support</span>
+            <span>Secure Sri Lanka LankaPay, Card & Apple Pay Processing with 24/7 Support</span>
           </div>
 
           <div className="flex items-center gap-2">

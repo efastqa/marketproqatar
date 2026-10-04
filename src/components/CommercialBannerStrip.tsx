@@ -73,7 +73,7 @@ export const CommercialBannerStrip: React.FC<CommercialBannerStripProps> = ({
   if (!currentBanner) return null;
 
   const whatsappLink = currentBanner.whatsappNumber
-    ? `https://wa.me/${currentBanner.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Salam! Inquiring about ${currentBanner.title} on MarketPro Qatar`)}`
+    ? `https://wa.me/${currentBanner.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello! Inquiring about ${currentBanner.title} on ebuymatale.lk`)}`
     : PLATFORM_WHATSAPP_LINK;
 
   const phoneCall = currentBanner.phone || PLATFORM_PHONE_DISPLAY;
@@ -110,7 +110,7 @@ export const CommercialBannerStrip: React.FC<CommercialBannerStripProps> = ({
             className="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-amber-300 text-xs font-bold border border-white/20 flex items-center gap-1 transition-all"
           >
             <Sparkles className="w-3 h-3 text-amber-400" />
-            <span>Advertise Here (أعلن معنا)</span>
+            <span>Advertise Here</span>
           </button>
         </div>
 

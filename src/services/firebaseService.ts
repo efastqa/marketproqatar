@@ -35,25 +35,31 @@ const ALERTS_COL = 'saved_alerts';
 const TRANSACTIONS_COL = 'transactions';
 const SYSTEM_COL = 'system';
 
+// All legacy default mock IDs permanently cleared so user can list fresh ads
+const DEFAULT_MOCK_IDS = ['list-1', 'list-2', 'list-3', 'list-4', 'list-5', 'list-6', 'list-7', 'list-8'];
+
 /**
  * Retrieve set of permanently deleted listing IDs from local cache and Firestore
  */
 export function getLocalDeletedIds(): Set<string> {
+  const result = new Set<string>(DEFAULT_MOCK_IDS);
   try {
-    const raw = localStorage.getItem('marketpro_deleted_listing_ids');
+    const raw = localStorage.getItem('ebuymatale_deleted_listing_ids') || localStorage.getItem('marketpro_deleted_listing_ids');
     if (raw) {
       const arr = JSON.parse(raw);
-      if (Array.isArray(arr)) return new Set(arr);
+      if (Array.isArray(arr)) {
+        arr.forEach(id => result.add(id));
+      }
     }
   } catch (e) {}
-  return new Set();
+  return result;
 }
 
 export function recordDeletedIdLocally(id: string): void {
   try {
     const set = getLocalDeletedIds();
     set.add(id);
-    localStorage.setItem('marketpro_deleted_listing_ids', JSON.stringify(Array.from(set)));
+    localStorage.setItem('ebuymatale_deleted_listing_ids', JSON.stringify(Array.from(set)));
   } catch (e) {}
 }
 
@@ -115,7 +121,7 @@ export function subscribeToListings(callback: (listings: Listing[]) => void): ()
     console.warn('Firestore listings subscription fallback to local cache:', error);
     const deletedIds = getLocalDeletedIds();
     try {
-      const saved = localStorage.getItem('marketpro_listings_custom');
+      const saved = localStorage.getItem('ebuymatale_live_listings');
       if (saved) {
         const parsed: Listing[] = JSON.parse(saved);
         callback(parsed.filter(l => !deletedIds.has(l.id)));
@@ -193,11 +199,11 @@ export async function deleteListingFromFirestore(listingId: string): Promise<voi
 
   // 2. Remove from localStorage cache
   try {
-    const raw = localStorage.getItem('marketpro_listings_custom');
+    const raw = localStorage.getItem('ebuymatale_live_listings');
     if (raw) {
       const arr: Listing[] = JSON.parse(raw);
       const updated = arr.filter(item => item.id !== listingId);
-      localStorage.setItem('marketpro_listings_custom', JSON.stringify(updated));
+      localStorage.setItem('ebuymatale_live_listings', JSON.stringify(updated));
     }
   } catch (e) {}
 

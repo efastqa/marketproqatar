@@ -48,7 +48,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
     setIsProcessing(true);
 
     setTimeout(() => {
-      const ref = `TXN-QA-${Math.floor(100000 + Math.random() * 900000)}`;
+      const ref = `TXN-LK-${Math.floor(100000 + Math.random() * 900000)}`;
       setTransactionRef(ref);
       setIsProcessing(false);
       setIsSuccess(true);
@@ -57,7 +57,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
         id: ref,
         type: 'escrow_purchase',
         amount: totalPayable,
-        currency: 'QAR',
+        currency: 'LKR',
         listingId: listing.id,
         listingTitle: listing.title,
         buyerName: cardHolder,
@@ -81,17 +81,17 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
       <div className="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden my-auto">
         
         {/* Header */}
-        <div className="p-5 border-b border-slate-200 dark:border-slate-800 bg-gradient-to-r from-slate-900 via-[#700f2b] to-slate-900 text-white flex items-center justify-between">
+        <div className="p-5 border-b border-slate-200 dark:border-slate-800 bg-gradient-to-r from-slate-900 via-emerald-900 to-slate-900 text-white flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="w-10 h-10 rounded-2xl bg-amber-400/20 text-amber-300 flex items-center justify-center font-bold">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-rose-300">
-                Qatar Secure Payment Gateway
+              <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-300">
+                Sri Lanka Secure Payment Gateway
               </span>
               <h3 className="text-base font-black text-white">
-                MarketPro Escrow Buyer Protection
+                ebuymatale.lk Escrow Buyer Protection
               </h3>
             </div>
           </div>
@@ -115,7 +115,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                 Funds Held in Safe Escrow!
               </h3>
               <p className="text-xs text-slate-500 max-w-sm mx-auto mt-1">
-                Your payment of <strong className="text-slate-900 dark:text-white">{totalPayable.toLocaleString()} QAR</strong> has been securely locked in MarketPro Qatar Escrow account.
+                Your payment of <strong className="text-slate-900 dark:text-white">Rs. {totalPayable.toLocaleString()}</strong> has been securely locked in ebuymatale.lk Escrow account.
               </p>
             </div>
 
@@ -135,26 +135,26 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
               </div>
               <div className="flex justify-between text-slate-500">
                 <span>Payment Method:</span>
-                <strong className="text-[#8A1538] dark:text-rose-400 font-bold">{paymentMethod} Gateway (Qatar)</strong>
+                <strong className="text-emerald-600 dark:text-emerald-400 font-bold">{paymentMethod} Gateway (Sri Lanka)</strong>
               </div>
               <div className="pt-2 border-t border-slate-200 dark:border-slate-700 flex justify-between font-bold text-sm">
                 <span>Total Amount Escrowed:</span>
-                <span className="text-emerald-600 dark:text-emerald-400">{totalPayable.toLocaleString()} QAR</span>
+                <span className="text-emerald-600 dark:text-emerald-400">Rs. {totalPayable.toLocaleString()}</span>
               </div>
             </div>
 
             <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-700 text-[11px] text-amber-900 dark:text-amber-200 text-left">
-              <p className="font-bold">Next Steps for Qatar Handover:</p>
-              <p className="mt-0.5">1. Meet seller to inspect item at preferred Qatar location.</p>
-              <p>2. Once satisfied, release payment via SMS OTP or MarketPro app.</p>
-              <p>3. If item is not as described, receive 100% immediate refund.</p>
+              <p className="font-bold">Next Steps for Matale Handover:</p>
+              <p className="mt-0.5">1. Meet seller to inspect item/deed at preferred Matale location.</p>
+              <p>2. Once verified, release payment via SMS OTP or ebuymatale.lk dashboard.</p>
+              <p>3. If item or deed is not as represented, receive 100% immediate refund.</p>
             </div>
 
             <button
               onClick={onClose}
-              className="w-full py-3 bg-[#8A1538] hover:bg-rose-900 text-white font-bold text-sm rounded-2xl shadow-lg"
+              className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-2xl shadow-lg"
             >
-              Done & Return to MarketPro
+              Done & Return to ebuymatale.lk
             </button>
           </div>
         ) : (
@@ -172,50 +172,50 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                   {listing.title}
                 </h4>
                 <p className="text-xs text-slate-500">{listing.seller.name} • {listing.location}</p>
-                <p className="text-xs font-extrabold text-[#8A1538] dark:text-rose-400 mt-0.5">
-                  Item Price: {listing.price.toLocaleString()} QAR
+                <p className="text-xs font-extrabold text-emerald-700 dark:text-emerald-400 mt-0.5">
+                  Item Price: Rs. {listing.price.toLocaleString()}
                 </p>
               </div>
             </div>
 
-            {/* Payment Gateway Options (Qatar Standards) */}
+            {/* Payment Gateway Options (Sri Lanka Standards) */}
             <div>
               <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 mb-2">
-                Select Qatar Payment Method
+                Select Sri Lanka Payment Method
               </label>
 
               <div className="grid grid-cols-3 gap-2">
-                {/* QNB Gateway */}
+                {/* Bank Gateway */}
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('QNB')}
                   className={`p-3 rounded-2xl border text-center transition-all flex flex-col items-center gap-1 ${
                     paymentMethod === 'QNB'
-                      ? 'border-[#8A1538] bg-rose-50/50 dark:bg-rose-950/40 text-[#8A1538] dark:text-rose-300 font-bold ring-2 ring-[#8A1538]/20'
+                      ? 'border-emerald-600 bg-emerald-50/50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 font-bold ring-2 ring-emerald-600/20'
                       : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
                   }`}
                 >
-                  <Building2 className="w-5 h-5 text-[#8A1538]" />
-                  <span className="text-[11px] font-bold">QNB Pay</span>
-                  <span className="text-[9px] text-slate-400">Qatar National</span>
+                  <Building2 className="w-5 h-5 text-emerald-600" />
+                  <span className="text-[11px] font-bold">Bank Transfer</span>
+                  <span className="text-[9px] text-slate-400">BOC / Commercial</span>
                 </button>
 
-                {/* QPay Gateway */}
+                {/* Card Gateway */}
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('QPay')}
                   className={`p-3 rounded-2xl border text-center transition-all flex flex-col items-center gap-1 ${
                     paymentMethod === 'QPay'
-                      ? 'border-blue-600 bg-blue-50/50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 font-bold ring-2 ring-blue-600/20'
+                      ? 'border-emerald-600 bg-emerald-50/50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 font-bold ring-2 ring-emerald-600/20'
                       : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
                   }`}
                 >
-                  <Smartphone className="w-5 h-5 text-blue-600" />
-                  <span className="text-[11px] font-bold">QPay Qatar</span>
-                  <span className="text-[9px] text-slate-400">Direct Debit</span>
+                  <CreditCard className="w-5 h-5 text-emerald-600" />
+                  <span className="text-[11px] font-bold">Card Pay</span>
+                  <span className="text-[9px] text-slate-400">Visa / Master</span>
                 </button>
 
-                {/* NAPS Debit */}
+                {/* LankaPay Debit */}
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('NAPS_Debit')}
@@ -225,9 +225,9 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                       : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
                   }`}
                 >
-                  <CreditCard className="w-5 h-5 text-emerald-600" />
-                  <span className="text-[11px] font-bold">NAPS Card</span>
-                  <span className="text-[9px] text-slate-400">Qatar Central Bank</span>
+                  <Smartphone className="w-5 h-5 text-emerald-600" />
+                  <span className="text-[11px] font-bold">LankaPay</span>
+                  <span className="text-[9px] text-slate-400">CBSL Compliant</span>
                 </button>
               </div>
 
@@ -276,7 +276,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
               <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-3">
                 <div>
                   <label className="block text-[11px] font-bold text-slate-600 dark:text-slate-300 mb-1">
-                    Cardholder Name (as on QID)
+                    Cardholder Name (as on NIC / Card)
                   </label>
                   <input
                     type="text"
@@ -334,37 +334,37 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
             <div className="space-y-1.5 pt-2 border-t border-slate-200 dark:border-slate-700 text-xs">
               <div className="flex justify-between text-slate-600 dark:text-slate-400">
                 <span>Listing Price:</span>
-                <span className="font-semibold text-slate-900 dark:text-white">{listing.price.toLocaleString()} QAR</span>
+                <span className="font-semibold text-slate-900 dark:text-white">Rs. {listing.price.toLocaleString()}</span>
               </div>
               <div className="flex justify-between text-slate-600 dark:text-slate-400">
                 <span>Escrow Inspection & Guarantee (1%):</span>
-                <span className="font-semibold text-slate-900 dark:text-white">{escrowFee.toLocaleString()} QAR</span>
+                <span className="font-semibold text-slate-900 dark:text-white">Rs. {escrowFee.toLocaleString()}</span>
               </div>
               <div className="flex justify-between text-sm font-black text-slate-900 dark:text-white pt-2 border-t border-slate-100 dark:border-slate-800">
                 <span>Total Escrow Authorization:</span>
-                <span className="text-[#8A1538] dark:text-rose-400">{totalPayable.toLocaleString()} QAR</span>
+                <span className="text-emerald-700 dark:text-emerald-400">Rs. {totalPayable.toLocaleString()}</span>
               </div>
             </div>
 
             {/* Security Guarantee Note */}
             <div className="flex items-center gap-2 text-[11px] text-slate-500 bg-emerald-50 dark:bg-emerald-950/30 p-2.5 rounded-xl border border-emerald-200 dark:border-emerald-900/60">
               <Lock className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>256-Bit SSL Encrypted by QNB & Qatar Central Bank Regulatory Standards.</span>
+              <span>256-Bit SSL Encrypted under Central Bank of Sri Lanka (CBSL) Compliance.</span>
             </div>
 
             <button
               type="submit"
               disabled={isProcessing}
-              className="w-full py-3.5 bg-gradient-to-r from-[#8A1538] via-rose-700 to-[#8A1538] hover:from-rose-800 hover:to-rose-900 text-white font-black text-sm rounded-2xl shadow-xl shadow-rose-950/30 flex items-center justify-center gap-2 disabled:opacity-50 transition-transform active:scale-[0.98]"
+              className="w-full py-3.5 bg-gradient-to-r from-emerald-600 via-teal-700 to-emerald-600 hover:from-emerald-700 hover:to-teal-800 text-white font-black text-sm rounded-2xl shadow-xl flex items-center justify-center gap-2 disabled:opacity-50 transition-transform active:scale-[0.98]"
             >
               {isProcessing ? (
                 <>
                   <span className="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin"></span>
-                  Processing with Qatar Gateway...
+                  Processing with Sri Lanka Secure Gateway...
                 </>
               ) : (
                 <>
-                  <span>Authorize Escrow Payment ({totalPayable.toLocaleString()} QAR)</span>
+                  <span>Authorize Escrow Payment (Rs. {totalPayable.toLocaleString()})</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}

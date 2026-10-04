@@ -50,13 +50,13 @@ export const StoryPosterModal: React.FC<StoryPosterModalProps> = ({
 
     // Generate QR Code that leads directly to this listing and WhatsApp
     const listingUrl = `${window.location.origin}/?ad=${listing.id}`;
-    const qrPayload = `https://wa.me/97477315415?text=${encodeURIComponent(`Hi MarketPro Qatar, I am inquiring about: ${listing.title} (Ref: ${listing.id}) - Price: ${listing.price} QAR. Link: ${listingUrl}`)}`;
+    const qrPayload = `https://wa.me/94743383338?text=${encodeURIComponent(`Ayubowan ebuymatale.lk, I am inquiring about: ${listing.title} (Ref: ${listing.id}) - Price: ${listing.price} LKR. Link: ${listingUrl}`)}`;
 
     QRCode.toDataURL(qrPayload, {
       width: 250,
       margin: 1,
       color: {
-        dark: theme === 'maroon' ? '#8A1538' : theme === 'obsidian' ? '#0f172a' : '#065f46',
+        dark: theme === 'maroon' ? '#0f766e' : theme === 'obsidian' ? '#0f172a' : '#065f46',
         light: '#ffffff'
       }
     })
@@ -73,12 +73,12 @@ export const StoryPosterModal: React.FC<StoryPosterModalProps> = ({
   );
 
   const handleCopyShare = () => {
-    const promoText = `🇶🇦 *${listing.title}*
+    const promoText = `🇱🇰 *${listing.title}*
 💰 Price: ${formattedPrice}
-📍 Location: ${listing.location}, Qatar
+📍 Location: ${listing.location}, Matale, Sri Lanka
 🛡️ Verified Seller: ${listing.seller.name}
-📲 Scan QR or WhatsApp: +974 7731 5415
-🌐 View on MarketPro Qatar: ${window.location.origin}/?ad=${listing.id}`;
+📲 Scan QR or WhatsApp: 074 338 3338
+🌐 View on ebuymatale.lk: ${window.location.origin}/?ad=${listing.id}`;
 
     navigator.clipboard.writeText(promoText);
     setCopiedLink(true);
@@ -87,7 +87,7 @@ export const StoryPosterModal: React.FC<StoryPosterModalProps> = ({
 
   const handleWhatsAppShare = () => {
     const text = encodeURIComponent(
-      `🇶🇦 *${listing.title}*\n💰 Price: ${formattedPrice}\n📍 Location: ${listing.location}\n📲 WhatsApp direct: +974 7731 5415\n🌐 Check it out here: ${window.location.origin}/?ad=${listing.id}`
+      `🇱🇰 *${listing.title}*\n💰 Price: ${formattedPrice}\n📍 Location: ${listing.location}, Matale\n📲 WhatsApp direct: 074 338 3338\n🌐 Check it out on ebuymatale.lk: ${window.location.origin}/?ad=${listing.id}`
     );
     window.open(`https://wa.me/?text=${text}`, '_blank');
   };
@@ -128,15 +128,15 @@ export const StoryPosterModal: React.FC<StoryPosterModalProps> = ({
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
 
-      // 2. Decorative Top Qatar header bar
+      // 2. Decorative Top Sri Lanka header bar
       ctx.fillStyle = '#ffffff';
       ctx.font = 'bold 36px sans-serif';
-      ctx.fillText('🇶🇦 MARKETPRO QATAR', 60, 90);
+      ctx.fillText('🇱🇰 EBYMATALE.LK', 60, 90);
 
       ctx.fillStyle = '#f59e0b';
       ctx.font = 'bold 26px sans-serif';
       ctx.textAlign = 'right';
-      ctx.fillText('VERIFIED CLASSIFIED', width - 60, 90);
+      ctx.fillText('MATALE VERIFIED CLASSIFIED', width - 60, 90);
       ctx.textAlign = 'left';
 
       // 3. Load & Draw Main Listing Image
@@ -261,13 +261,13 @@ export const StoryPosterModal: React.FC<StoryPosterModalProps> = ({
 
         ctx.fillStyle = '#64748b';
         ctx.font = '24px sans-serif';
-        ctx.fillText('Instant verified inquiries on MarketPro Qatar', imgX + qrSize + 55, qrBoxY + 175);
+        ctx.fillText('Instant verified inquiries on ebuymatale.lk', imgX + qrSize + 55, qrBoxY + 175);
       }
 
       // Trigger Download
       const dataUrl = canvas.toDataURL('image/png');
       const link = document.createElement('a');
-      link.download = `MarketPro-Qatar-${listing.id}-${aspectRatio}-poster.png`;
+      link.download = `ebuymatale-lk-${listing.id}-${aspectRatio}-poster.png`;
       link.href = dataUrl;
       link.click();
 
@@ -306,7 +306,7 @@ export const StoryPosterModal: React.FC<StoryPosterModalProps> = ({
                 <span className="px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 text-[10px] font-black uppercase tracking-wider">
                   ⚡ Social Story & QR Generator
                 </span>
-                <span className="text-rose-200 text-xs hidden sm:inline">بوستر الإعلان للواتساب والانستغرام</span>
+                <span className="text-emerald-200 text-xs hidden sm:inline">WhatsApp & Instagram Flyer</span>
               </div>
               <h3 className="text-base sm:text-lg font-black text-white">
                 Shareable QR Flyer & Status Poster
@@ -332,7 +332,6 @@ export const StoryPosterModal: React.FC<StoryPosterModalProps> = ({
             <div className="space-y-2">
               <label className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center justify-between">
                 <span>Story & Aspect Ratio:</span>
-                <span className="text-[11px] text-slate-400">حجم البوستر</span>
               </label>
               <div className="grid grid-cols-2 gap-2">
                 <button
@@ -369,23 +368,36 @@ export const StoryPosterModal: React.FC<StoryPosterModalProps> = ({
               </div>
             </div>
 
-            {/* Qatar Theme Color */}
+            {/* Color Theme */}
             <div className="space-y-2">
               <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                Luxury Color Theme (نمط التصميم):
+                Premium Color Theme:
               </label>
               <div className="grid grid-cols-3 gap-2">
+                <button
+                  type="button"
+                  onClick={() => setTheme('emerald')}
+                  className={`py-2 px-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition-all ${
+                    theme === 'emerald'
+                      ? 'border-emerald-700 bg-emerald-700 text-white shadow-md'
+                      : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800'
+                  }`}
+                >
+                  <span className="w-3 h-3 rounded-full bg-emerald-600 border border-white"></span>
+                  <span>Matale Emerald</span>
+                </button>
+
                 <button
                   type="button"
                   onClick={() => setTheme('maroon')}
                   className={`py-2 px-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition-all ${
                     theme === 'maroon'
-                      ? 'border-[#8A1538] bg-[#8A1538] text-white shadow-md'
+                      ? 'border-blue-700 bg-blue-700 text-white shadow-md'
                       : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800'
                   }`}
                 >
-                  <span className="w-3 h-3 rounded-full bg-[#8A1538] border border-white"></span>
-                  <span>Qatar Maroon</span>
+                  <span className="w-3 h-3 rounded-full bg-blue-600 border border-white"></span>
+                  <span>Ceylon Sapphire</span>
                 </button>
 
                 <button
@@ -398,20 +410,7 @@ export const StoryPosterModal: React.FC<StoryPosterModalProps> = ({
                   }`}
                 >
                   <span className="w-3 h-3 rounded-full bg-slate-950 border border-amber-400"></span>
-                  <span>Dark Obsidian</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setTheme('emerald')}
-                  className={`py-2 px-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition-all ${
-                    theme === 'emerald'
-                      ? 'border-emerald-700 bg-emerald-700 text-white shadow-md'
-                      : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800'
-                  }`}
-                >
-                  <span className="w-3 h-3 rounded-full bg-emerald-600 border border-white"></span>
-                  <span>Emerald Palm</span>
+                  <span>Obsidian Gold</span>
                 </button>
               </div>
             </div>
@@ -464,10 +463,10 @@ export const StoryPosterModal: React.FC<StoryPosterModalProps> = ({
             <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
               <div className="flex items-center gap-1.5 font-bold text-slate-900 dark:text-white">
                 <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                <span>How QR Story Works in Qatar:</span>
+                <span>How QR Posters Work in Sri Lanka:</span>
               </div>
               <p>
-                Anyone who scans the printed or shared QR code with their mobile camera instantly opens this ad on MarketPro or chats with your hotline on WhatsApp (+974 7731 5415).
+                Anyone who scans the printed or shared QR code with their mobile camera instantly opens this ad on ebuymatale.lk or chats with the hotline on WhatsApp (074 338 3338).
               </p>
             </div>
           </div>
@@ -487,7 +486,7 @@ export const StoryPosterModal: React.FC<StoryPosterModalProps> = ({
                 aspectRatio === 'story' ? 'min-h-[580px]' : 'min-h-[420px]'
               } ${
                 theme === 'maroon'
-                  ? 'bg-gradient-to-b from-[#5a0c22] via-[#8A1538] to-[#2c040f] text-white border-amber-500/40'
+                  ? 'bg-gradient-to-b from-blue-950 via-slate-900 to-blue-950 text-white border-blue-400/40'
                   : theme === 'obsidian'
                   ? 'bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white border-amber-400/40'
                   : 'bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950 text-white border-emerald-400/40'
@@ -496,11 +495,11 @@ export const StoryPosterModal: React.FC<StoryPosterModalProps> = ({
               {/* Header inside poster */}
               <div className="p-3.5 flex items-center justify-between border-b border-white/15 bg-black/20">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-xs">🇶🇦</span>
-                  <span className="font-black text-xs tracking-wider">MARKETPRO QATAR</span>
+                  <span className="text-xs">🇱🇰</span>
+                  <span className="font-black text-xs tracking-wider">EBYMATALE.LK</span>
                 </div>
                 <span className="px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 font-black text-[9px] uppercase tracking-wider">
-                  VERIFIED AD
+                  MATALE VERIFIED
                 </span>
               </div>
 

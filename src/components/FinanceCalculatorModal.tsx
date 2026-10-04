@@ -12,7 +12,9 @@ import {
   ArrowRight,
   TrendingDown,
   Info,
-  CheckCircle
+  CheckCircle,
+  Trees,
+  Coins
 } from 'lucide-react';
 import { PLATFORM_PHONE_DISPLAY, PLATFORM_WHATSAPP_LINK } from '../data/mockData';
 
@@ -32,62 +34,62 @@ interface BankOption {
   features: string[];
 }
 
-const QATAR_BANKS: BankOption[] = [
+const SRI_LANKA_BANKS: BankOption[] = [
   {
-    name: 'Qatar National Bank (QNB)',
-    logo: '🏦 QNB',
-    carRate: 3.95,
-    mortgageRate: 4.50,
-    features: ['Instant Pre-Approval', 'Up to 5 Years Auto / 25 Years Property', 'Salary Transfer Benefit']
+    name: 'Bank of Ceylon (BOC)',
+    logo: '🏛️ BOC',
+    carRate: 11.5,
+    mortgageRate: 12.0,
+    features: ['State Bank Security', 'Up to 25 Years Housing / Land Loan', 'Matale Branch Direct Processing']
   },
   {
-    name: 'Commercial Bank of Qatar (CBQ)',
-    logo: '🏛️ CBQ',
-    carRate: 4.10,
-    mortgageRate: 4.65,
-    features: ['Zero Downpayment Option for Nationals', 'Complimentary First Year Insurance', 'Fast Track Approval']
+    name: 'Commercial Bank of Ceylon',
+    logo: '🏦 ComBank',
+    carRate: 12.0,
+    mortgageRate: 12.5,
+    features: ['Instant Pre-Approval', 'Vehicle Leasing & Land Mortgage', 'Competitive Interest Rates']
   },
   {
-    name: 'Qatar Islamic Bank (QIB)',
-    logo: '🕌 QIB',
-    carRate: 4.05,
-    mortgageRate: 4.60,
-    features: ['100% Sharia-Compliant Murabaha', 'No Hidden Fees', 'Flexible Grace Periods']
+    name: 'Hatton National Bank (HNB)',
+    logo: '🏢 HNB',
+    carRate: 12.2,
+    mortgageRate: 12.75,
+    features: ['Flexible Repayment Options', 'Fast Digital Processing', 'Tea & Agro Estate Financing']
   },
   {
-    name: 'Dukhan Bank',
-    logo: '🌟 Dukhan',
-    carRate: 3.85,
-    mortgageRate: 4.45,
-    features: ['Competitive Profit Rates', 'Digital Application', 'Loyalty Rewards Points']
+    name: 'Sampath Bank',
+    logo: '🌟 Sampath',
+    carRate: 12.0,
+    mortgageRate: 12.5,
+    features: ['Sannasa Land & Housing Loan', 'Zero Prepayment Penalties', 'Speedy Lease Approvals']
   }
 ];
 
 export const FinanceCalculatorModal: React.FC<FinanceCalculatorModalProps> = ({
   isOpen,
   onClose,
-  initialPrice = 250000,
-  initialType = 'vehicle',
+  initialPrice = 7500000,
+  initialType = 'property',
   listingTitle
 }) => {
   const [loanType, setLoanType] = useState<'vehicle' | 'property'>(initialType);
-  const [price, setPrice] = useState<number>(initialPrice || (loanType === 'vehicle' ? 250000 : 2500000));
-  const [downPaymentPercent, setDownPaymentPercent] = useState<number>(20);
-  const [interestRate, setInterestRate] = useState<number>(loanType === 'vehicle' ? 3.95 : 4.50);
-  const [tenureYears, setTenureYears] = useState<number>(loanType === 'vehicle' ? 4 : 20);
-  const [selectedBank, setSelectedBank] = useState<string>('Qatar National Bank (QNB)');
+  const [price, setPrice] = useState<number>(initialPrice || (loanType === 'vehicle' ? 5000000 : 15000000));
+  const [downPaymentPercent, setDownPaymentPercent] = useState<number>(25);
+  const [interestRate, setInterestRate] = useState<number>(loanType === 'vehicle' ? 12.0 : 12.5);
+  const [tenureYears, setTenureYears] = useState<number>(loanType === 'vehicle' ? 5 : 15);
+  const [selectedBank, setSelectedBank] = useState<string>('Bank of Ceylon (BOC)');
 
   // Sync loanType change defaults
   const handleTypeChange = (type: 'vehicle' | 'property') => {
     setLoanType(type);
     if (type === 'vehicle') {
-      if (price > 1000000) setPrice(280000);
-      setTenureYears(4);
-      setInterestRate(3.95);
+      if (price > 20000000) setPrice(6000000);
+      setTenureYears(5);
+      setInterestRate(12.0);
     } else {
-      if (price < 500000) setPrice(2200000);
-      setTenureYears(20);
-      setInterestRate(4.50);
+      if (price < 3000000) setPrice(15000000);
+      setTenureYears(15);
+      setInterestRate(12.5);
     }
   };
 
@@ -143,18 +145,19 @@ export const FinanceCalculatorModal: React.FC<FinanceCalculatorModalProps> = ({
         {/* Modal Header */}
         <div className="p-5 sm:p-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between sticky top-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md z-10">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-rose-500/10 dark:bg-rose-500/20 text-[#8A1538] dark:text-rose-400 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
               <Calculator className="w-5 h-5" />
             </div>
             <div>
               <h2 className="text-lg sm:text-xl font-black text-slate-900 dark:text-white">
-                Qatar Auto & Mortgage Finance Calculator
+                Sri Lanka Land & Vehicle Finance Calculator
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400">
-                {listingTitle ? `Estimate installments for "${listingTitle}"` : 'Calculate monthly EMI with top Qatar banks'}
+                Estimate monthly installments for Land, Houses & Vehicles in Matale (LKR)
               </p>
             </div>
           </div>
+
           <button
             onClick={onClose}
             className="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
@@ -163,275 +166,192 @@ export const FinanceCalculatorModal: React.FC<FinanceCalculatorModalProps> = ({
           </button>
         </div>
 
-        {/* Modal Body */}
-        <div className="p-5 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+        {/* Content Body */}
+        <div className="p-5 sm:p-8 space-y-8">
           
-          {/* Left Column: Interactive Inputs */}
-          <div className="lg:col-span-7 space-y-5">
-            
-            {/* Loan Type Selector */}
-            <div className="grid grid-cols-2 gap-2 p-1.5 bg-slate-100 dark:bg-slate-800/80 rounded-2xl">
+          {/* Loan Category Selector */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-1.5 bg-slate-100 dark:bg-slate-800/80 rounded-2xl">
+            <div className="grid grid-cols-2 gap-1 w-full sm:w-auto">
               <button
-                type="button"
+                onClick={() => handleTypeChange('property')}
+                className={`py-2.5 px-6 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all ${
+                  loanType === 'property'
+                    ? 'bg-emerald-600 text-white shadow-md'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+                }`}
+              >
+                <Trees className="w-4 h-4" />
+                <span>Land & Housing Loan</span>
+              </button>
+              
+              <button
                 onClick={() => handleTypeChange('vehicle')}
-                className={`py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all ${
+                className={`py-2.5 px-6 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all ${
                   loanType === 'vehicle'
-                    ? 'bg-[#8A1538] text-white shadow-md'
-                    : 'text-slate-600 dark:text-slate-300 hover:bg-white/50 dark:hover:bg-slate-700/50'
+                    ? 'bg-emerald-600 text-white shadow-md'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
                 }`}
               >
                 <Car className="w-4 h-4" />
-                <span>Auto Loan (سيارات)</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleTypeChange('property')}
-                className={`py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all ${
-                  loanType === 'property'
-                    ? 'bg-[#8A1538] text-white shadow-md'
-                    : 'text-slate-600 dark:text-slate-300 hover:bg-white/50 dark:hover:bg-slate-700/50'
-                }`}
-              >
-                <Building2 className="w-4 h-4" />
-                <span>Property Mortgage (عقارات)</span>
+                <span>Vehicle Leasing</span>
               </button>
             </div>
 
-            {/* Total Price Input */}
-            <div className="space-y-1.5">
-              <div className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
-                <span>{loanType === 'vehicle' ? 'Vehicle Price' : 'Property Value'}</span>
-                <span className="text-[#8A1538] dark:text-rose-400 font-mono text-sm">
-                  {price.toLocaleString()} QAR
-                </span>
-              </div>
-              <div className="relative">
+            {listingTitle && (
+              <span className="text-xs text-slate-500 truncate max-w-xs px-2">
+                Listing: <strong>{listingTitle}</strong>
+              </span>
+            )}
+          </div>
+
+          {/* Form & Results Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            {/* Input Controls (Spans 7 cols) */}
+            <div className="lg:col-span-7 space-y-6">
+              
+              {/* Price Input */}
+              <div className="space-y-2">
+                <div className="flex justify-between items-center text-xs font-bold text-slate-700 dark:text-slate-300">
+                  <label>Total Price (LKR)</label>
+                  <span className="text-emerald-600 font-mono text-base font-black">
+                    Rs. {price.toLocaleString()}
+                  </span>
+                </div>
                 <input
                   type="range"
-                  min={loanType === 'vehicle' ? 30000 : 500000}
-                  max={loanType === 'vehicle' ? 1500000 : 15000000}
-                  step={loanType === 'vehicle' ? 5000 : 50000}
+                  min={loanType === 'vehicle' ? 1000000 : 2000000}
+                  max={loanType === 'vehicle' ? 60000000 : 150000000}
+                  step={loanType === 'vehicle' ? 500000 : 1000000}
                   value={price}
                   onChange={(e) => setPrice(Number(e.target.value))}
-                  className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-[#8A1538]"
+                  className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                 />
               </div>
-              <div className="flex gap-2 pt-1">
-                {[
-                  loanType === 'vehicle' ? 120000 : 1200000,
-                  loanType === 'vehicle' ? 260000 : 2500000,
-                  loanType === 'vehicle' ? 450000 : 4800000,
-                  loanType === 'vehicle' ? 850000 : 8000000
-                ].map((val) => (
-                  <button
-                    key={val}
-                    type="button"
-                    onClick={() => setPrice(val)}
-                    className="px-2.5 py-1 text-[11px] font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-[#8A1538] hover:text-white transition-colors"
-                  >
-                    {(val / 1000).toLocaleString()}k QAR
-                  </button>
-                ))}
-              </div>
-            </div>
 
-            {/* Down Payment Slider */}
-            <div className="space-y-1.5">
-              <div className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
-                <span>Down Payment ({downPaymentPercent}%)</span>
-                <span className="text-emerald-600 dark:text-emerald-400 font-mono text-xs">
-                  {downPaymentAmount.toLocaleString()} QAR
-                </span>
+              {/* Down Payment */}
+              <div className="space-y-2">
+                <div className="flex justify-between items-center text-xs font-bold text-slate-700 dark:text-slate-300">
+                  <label>Down Payment ({downPaymentPercent}%)</label>
+                  <span className="text-slate-900 dark:text-white font-mono">
+                    Rs. {downPaymentAmount.toLocaleString()}
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min={10}
+                  max={80}
+                  step={5}
+                  value={downPaymentPercent}
+                  onChange={(e) => setDownPaymentPercent(Number(e.target.value))}
+                  className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                />
               </div>
-              <input
-                type="range"
-                min="0"
-                max="60"
-                step="5"
-                value={downPaymentPercent}
-                onChange={(e) => setDownPaymentPercent(Number(e.target.value))}
-                className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500"
-              />
-              <div className="flex justify-between text-[10px] text-slate-400 font-semibold">
-                <span>0% (Full Finance)</span>
-                <span>20% (Standard)</span>
-                <span>40%</span>
-                <span>60%</span>
-              </div>
-            </div>
 
-            {/* Tenure & Interest Rate row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* Tenure */}
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">
-                  <Calendar className="w-3.5 h-3.5 text-[#8A1538]" />
-                  <span>Loan Period (المدة)</span>
-                </label>
-                <select
+              {/* Tenure (Years) */}
+              <div className="space-y-2">
+                <div className="flex justify-between items-center text-xs font-bold text-slate-700 dark:text-slate-300">
+                  <label>Loan Duration (Tenure)</label>
+                  <span className="text-slate-900 dark:text-white font-mono">
+                    {tenureYears} Years ({tenureYears * 12} Months)
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min={1}
+                  max={loanType === 'vehicle' ? 7 : 25}
+                  step={1}
                   value={tenureYears}
                   onChange={(e) => setTenureYears(Number(e.target.value))}
-                  className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:border-[#8A1538]"
-                >
-                  {loanType === 'vehicle' ? (
-                    <>
-                      <option value={1}>1 Year (12 Months)</option>
-                      <option value={2}>2 Years (24 Months)</option>
-                      <option value={3}>3 Years (36 Months)</option>
-                      <option value={4}>4 Years (48 Months)</option>
-                      <option value={5}>5 Years (60 Months - Max Auto)</option>
-                    </>
-                  ) : (
-                    <>
-                      <option value={5}>5 Years (60 Months)</option>
-                      <option value={10}>10 Years (120 Months)</option>
-                      <option value={15}>15 Years (180 Months)</option>
-                      <option value={20}>20 Years (240 Months)</option>
-                      <option value={25}>25 Years (300 Months - Max Mortgage)</option>
-                    </>
-                  )}
-                </select>
+                  className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                />
               </div>
 
               {/* Interest Rate */}
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">
-                  <Percent className="w-3.5 h-3.5 text-amber-500" />
-                  <span>Profit/Interest Rate %</span>
-                </label>
-                <div className="flex items-center gap-2">
-                  <input
-                    type="number"
-                    step="0.05"
-                    min="2.5"
-                    max="10.0"
-                    value={interestRate}
-                    onChange={(e) => setInterestRate(parseFloat(e.target.value) || 0)}
-                    className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-[#8A1538]"
-                  />
-                  <span className="text-xs font-bold text-slate-500">% p.a.</span>
+              <div className="space-y-2">
+                <div className="flex justify-between items-center text-xs font-bold text-slate-700 dark:text-slate-300">
+                  <label>Annual Interest Rate</label>
+                  <span className="text-slate-900 dark:text-white font-mono">{interestRate}%</span>
                 </div>
+                <input
+                  type="range"
+                  min={9.0}
+                  max={18.0}
+                  step={0.25}
+                  value={interestRate}
+                  onChange={(e) => setInterestRate(Number(e.target.value))}
+                  className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                />
               </div>
-            </div>
 
-            {/* Bank Comparison Quick Pick */}
-            <div className="space-y-2 pt-2">
-              <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                Benchmark Rates by Qatar Banks
-              </label>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                {QATAR_BANKS.map((b) => {
-                  const rate = loanType === 'vehicle' ? b.carRate : b.mortgageRate;
-                  const isSelected = selectedBank === b.name;
-                  return (
+              {/* Sri Lanka Banks Comparison */}
+              <div className="space-y-2">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300">
+                  Select Sri Lanka Bank Benchmark:
+                </label>
+                <div className="grid grid-cols-2 gap-2">
+                  {SRI_LANKA_BANKS.map((b) => (
                     <button
                       key={b.name}
-                      type="button"
                       onClick={() => {
                         setSelectedBank(b.name);
-                        setInterestRate(rate);
+                        setInterestRate(loanType === 'vehicle' ? b.carRate : b.mortgageRate);
                       }}
-                      className={`p-2.5 rounded-2xl border text-left transition-all ${
-                        isSelected
-                          ? 'border-[#8A1538] bg-rose-50/50 dark:bg-rose-950/30 text-[#8A1538] dark:text-rose-300 ring-2 ring-[#8A1538]/20'
-                          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60 text-slate-700 dark:text-slate-300 hover:border-slate-300'
+                      className={`p-3 rounded-2xl border text-left transition-all ${
+                        selectedBank === b.name
+                          ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-slate-900 dark:text-white'
+                          : 'border-slate-200 dark:border-slate-700 hover:border-slate-300 text-slate-600 dark:text-slate-400'
                       }`}
                     >
-                      <div className="text-[11px] font-extrabold truncate">{b.logo}</div>
-                      <div className="text-xs font-black text-slate-900 dark:text-white mt-1">
-                        {rate}%
+                      <div className="text-xs font-bold">{b.logo} {b.name}</div>
+                      <div className="text-[11px] text-emerald-600 font-bold mt-1">
+                        Rate: {loanType === 'vehicle' ? b.carRate : b.mortgageRate}% p.a.
                       </div>
-                      <div className="text-[9px] text-slate-400">Fixed Rate</div>
                     </button>
-                  );
-                })}
+                  ))}
+                </div>
               </div>
+
             </div>
 
-          </div>
-
-          {/* Right Column: Financial Result Summary & Call to Action */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 via-[#73102d] to-slate-950 text-white rounded-3xl p-5 sm:p-6 border border-rose-900/40 shadow-xl flex flex-col justify-between space-y-6">
-            
-            <div>
-              <div className="flex items-center justify-between pb-3 border-b border-white/10">
-                <span className="text-xs text-rose-200 font-semibold uppercase tracking-wider">
-                  Estimated Monthly EMI
+            {/* Results Card (Spans 5 cols) */}
+            <div className="lg:col-span-5 bg-gradient-to-br from-emerald-800 via-teal-900 to-slate-900 text-white rounded-3xl p-6 sm:p-7 shadow-xl space-y-6">
+              <div>
+                <span className="text-xs text-emerald-200 font-bold uppercase tracking-wider block">
+                  Estimated Monthly Installment
                 </span>
-                <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30">
-                  {tenureYears * 12} Installments
-                </span>
-              </div>
-
-              <div className="mt-4 text-center">
-                <span className="text-3xl sm:text-4xl font-black tracking-tight text-white">
-                  {calculation.monthlyPayment.toLocaleString()}
-                </span>
-                <span className="text-sm font-bold text-amber-300 ml-1.5">QAR / month</span>
-                <p className="text-[11px] text-slate-300 mt-1">
-                  Estimated repayment per month
-                </p>
-              </div>
-
-              {/* Progress Bar of Principal vs Interest */}
-              <div className="mt-5 space-y-1.5">
-                <div className="flex justify-between text-[11px] font-bold">
-                  <span className="text-emerald-400">Principal: {principalPercent}%</span>
-                  <span className="text-amber-400">Interest/Profit: {interestPercent}%</span>
-                </div>
-                <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden flex">
-                  <div 
-                    className="bg-emerald-500 h-full transition-all duration-500" 
-                    style={{ width: `${principalPercent}%` }}
-                  />
-                  <div 
-                    className="bg-amber-400 h-full transition-all duration-500" 
-                    style={{ width: `${interestPercent}%` }}
-                  />
+                <div className="text-3xl sm:text-4xl font-black font-mono tracking-tight text-white mt-1">
+                  Rs. {calculation.monthlyPayment.toLocaleString()}
+                  <span className="text-sm font-normal text-emerald-200"> / mo</span>
                 </div>
               </div>
 
-              {/* Financial Breakdown Table */}
-              <div className="mt-5 space-y-2 text-xs bg-black/30 rounded-2xl p-3.5 border border-white/10">
-                <div className="flex justify-between text-slate-300">
-                  <span>Financed Loan Amount:</span>
-                  <span className="font-bold text-white">{loanAmount.toLocaleString()} QAR</span>
+              <div className="space-y-3 pt-3 border-t border-emerald-700/60 text-xs">
+                <div className="flex justify-between">
+                  <span className="text-slate-300">Loan Principal:</span>
+                  <span className="font-mono font-bold">Rs. {loanAmount.toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between text-slate-300">
-                  <span>Down Payment ({downPaymentPercent}%):</span>
-                  <span className="font-bold text-emerald-400">{downPaymentAmount.toLocaleString()} QAR</span>
+                <div className="flex justify-between">
+                  <span className="text-slate-300">Total Interest Payable:</span>
+                  <span className="font-mono font-bold text-amber-300">Rs. {calculation.totalInterest.toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between text-slate-300">
-                  <span>Total Interest / Profit:</span>
-                  <span className="font-bold text-amber-300">+{calculation.totalInterest.toLocaleString()} QAR</span>
-                </div>
-                <div className="pt-2 border-t border-white/10 flex justify-between font-extrabold text-sm">
-                  <span>Total Payable:</span>
-                  <span className="text-white">{calculation.totalPayment.toLocaleString()} QAR</span>
+                <div className="flex justify-between">
+                  <span className="text-slate-300">Total Loan Cost:</span>
+                  <span className="font-mono font-black text-white">Rs. {calculation.totalPayment.toLocaleString()}</span>
                 </div>
               </div>
-            </div>
 
-            {/* Quick Consultation CTAs */}
-            <div className="space-y-2 pt-3 border-t border-white/10">
-              <a
-                href={`${PLATFORM_WHATSAPP_LINK}&text=Hello%20MarketPro,%20I%20want%20pre-approval%20financing%20for%20a%20${loanType}%20valued%20at%20${price.toLocaleString()}%20QAR%20with%20monthly%20estimate%20${calculation.monthlyPayment.toLocaleString()}%20QAR`}
-                target="_blank"
-                rel="noreferrer"
-                className="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black flex items-center justify-center gap-2 shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
-              >
-                <MessageSquare className="w-4 h-4" />
-                <span>Get Bank Pre-Approval via WhatsApp</span>
-              </a>
-
-              <a
-                href="tel:+97477315415"
-                className="w-full py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold flex items-center justify-center gap-2 border border-white/10 transition-colors"
-              >
-                <Phone className="w-3.5 h-3.5 text-amber-400" />
-                <span>Call Qatar Finance Desk ({PLATFORM_PHONE_DISPLAY})</span>
-              </a>
+              <div className="pt-2">
+                <a
+                  href={PLATFORM_WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full py-3 px-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black rounded-xl text-xs flex items-center justify-center gap-1.5 transition-colors shadow-lg"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Consult Loan Officer via WhatsApp</span>
+                </a>
+              </div>
             </div>
 
           </div>

@@ -40,7 +40,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
           onClick={() => onNavigate('home')}
           className={`flex flex-col items-center gap-0.5 p-1.5 rounded-xl transition-colors ${
             currentView === 'home'
-              ? 'text-[#8A1538] dark:text-rose-400 font-bold'
+              ? 'text-emerald-600 dark:text-emerald-400 font-bold'
               : 'text-slate-500 dark:text-slate-400'
           }`}
         >
@@ -53,12 +53,12 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
           onClick={() => onNavigate('map')}
           className={`flex flex-col items-center gap-0.5 p-1.5 rounded-xl transition-colors ${
             currentView === 'map'
-              ? 'text-[#8A1538] dark:text-rose-400 font-bold'
+              ? 'text-emerald-600 dark:text-emerald-400 font-bold'
               : 'text-slate-500 dark:text-slate-400'
           }`}
         >
           <MapPin className="w-5 h-5" />
-          <span className="text-[10px]">Qatar Map</span>
+          <span className="text-[10px]">Matale Map</span>
         </button>
 
         {/* Floating Post Ad Center Action */}
@@ -67,10 +67,10 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
           className="flex flex-col items-center -mt-5"
           title="Post Ad"
         >
-          <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#8A1538] via-rose-700 to-amber-500 text-white shadow-xl shadow-rose-950/40 flex items-center justify-center border-2 border-white dark:border-slate-900 transform active:scale-95 transition-transform">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-emerald-600 via-teal-700 to-amber-500 text-white shadow-xl shadow-emerald-950/40 flex items-center justify-center border-2 border-white dark:border-slate-900 transform active:scale-95 transition-transform">
             <PlusCircle className="w-6 h-6" />
           </div>
-          <span className="text-[10px] font-bold text-[#8A1538] dark:text-rose-400 mt-0.5">Sell (+)</span>
+          <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">Sell (+)</span>
         </button>
 
         {/* Messages */}
@@ -93,7 +93,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
         {currentUser ? (
           <button
             onClick={onOpenProfile}
-            className="flex flex-col items-center gap-0.5 p-1.5 rounded-xl text-[#8A1538] dark:text-rose-400 font-bold relative"
+            className="flex flex-col items-center gap-0.5 p-1.5 rounded-xl text-emerald-600 dark:text-emerald-400 font-bold relative"
           >
             <img
               src={currentUser.avatar}

@@ -231,7 +231,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                 </div>
 
                 <p className="text-xs text-slate-400">
-                  Manage, mark sold, or boost your listings in Qatar
+                  Manage, mark sold, or boost your listings in Matale, Sri Lanka
                 </p>
               </div>
 
@@ -242,14 +242,14 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                   </div>
                   <h4 className="text-base font-bold">No advertisements found in this filter</h4>
                   <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
-                    Ready to sell your car, villa, watch, or electronics? Post your advertisement now and reach thousands of verified Qatar buyers.
+                    Ready to sell lands, certified gems, tea estates, vehicles, or electronics? Post your advertisement now and reach verified Matale buyers.
                   </p>
                   <button
                     onClick={() => {
                       onClose();
                       onOpenPostAd();
                     }}
-                    className="px-5 py-2.5 rounded-2xl bg-[#8A1538] hover:bg-[#6c0f2b] text-white font-bold text-xs shadow-md inline-flex items-center gap-1.5"
+                    className="px-5 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md inline-flex items-center gap-1.5"
                   >
                     <PlusCircle className="w-4 h-4" />
                     <span>Post Your First Ad Now</span>
@@ -280,11 +280,11 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                             </span>
                             {ad.status === 'sold' ? (
                               <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
-                                Sold (تم البيع)
+                                Sold
                               </span>
                             ) : ad.status === 'pending' ? (
                               <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30 flex items-center gap-1">
-                                <Clock className="w-2.5 h-2.5" /> Under Admin Review (قيد التدقيق)
+                                <Clock className="w-2.5 h-2.5" /> Under Admin Review
                               </span>
                             ) : ad.status === 'rejected' ? (
                               <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/20 text-rose-600 dark:text-rose-400">
@@ -376,7 +376,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                   <div className="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                    <p className="text-slate-400 font-medium">Qatar Phone (جوال قطر)</p>
+                    <p className="text-slate-400 font-medium">Sri Lanka Mobile & WhatsApp</p>
                     <p className="font-bold text-slate-900 dark:text-white mt-0.5">{user.phone}</p>
                     <span className="text-[10px] text-emerald-500 font-bold flex items-center gap-1 mt-1">
                       <CheckCircle className="w-3 h-3" /> OTP Verified
@@ -392,10 +392,10 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                   </div>
 
                   <div className="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                    <p className="text-slate-400 font-medium">QID National ID Verification</p>
-                    <p className="font-bold text-slate-900 dark:text-white mt-0.5">Verified Qatar Resident / Citizen</p>
-                    <span className="text-[10px] text-amber-600 dark:text-amber-400 font-bold flex items-center gap-1 mt-1">
-                      <ShieldCheck className="w-3 h-3" /> Ministry of Interior (Metrash2) compliant
+                    <p className="text-slate-400 font-medium">NIC National Identity Verification</p>
+                    <p className="font-bold text-slate-900 dark:text-white mt-0.5">Verified Sri Lankan Citizen / Resident</p>
+                    <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1 mt-1">
+                      <ShieldCheck className="w-3 h-3" /> NIC & Phone Verified
                     </span>
                   </div>
 
@@ -422,7 +422,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
             }}
             className="px-4 py-2 rounded-xl text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 text-xs font-bold flex items-center gap-1.5 transition-colors"
           >
-            <LogOut className="w-4 h-4" /> Sign Out (تسجيل الخروج)
+            <LogOut className="w-4 h-4" /> Sign Out
           </button>
 
           <button

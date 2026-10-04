@@ -1,5 +1,5 @@
-// MarketPro Qatar PWA Service Worker
-const CACHE_NAME = 'marketpro-qatar-v1';
+// ebuymatale.lk PWA Service Worker
+const CACHE_NAME = 'ebuymatale-lk-v1';
 const STATIC_ASSETS = [
   '/',
   '/index.html',

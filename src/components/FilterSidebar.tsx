@@ -62,13 +62,13 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
             <h3 className="font-black text-slate-900 dark:text-white text-base">
               Filter Listings
             </h3>
-            <p className="text-xs text-slate-500">Refine search in Qatar market</p>
+            <p className="text-xs text-slate-500">Refine search across Matale District</p>
           </div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={handleReset}
-              className="p-2 text-slate-500 hover:text-[#8A1538] dark:hover:text-rose-400 text-xs font-semibold flex items-center gap-1"
+              className="p-2 text-slate-500 hover:text-emerald-600 dark:hover:text-emerald-400 text-xs font-semibold flex items-center gap-1"
               title="Reset all filters"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -142,18 +142,18 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
             </div>
           )}
 
-          {/* Location in Qatar */}
+          {/* Location in Matale District */}
           <div>
             <label className="block text-xs font-bold text-slate-900 dark:text-white mb-2 uppercase tracking-wide">
-              Municipality / Location
+              Matale District / Area
             </label>
             <select
               value={filters.location}
-              onChange={(e) => onFilterChange({ location: e.target.value === 'All Qatar' ? '' : e.target.value })}
+              onChange={(e) => onFilterChange({ location: e.target.value === 'All Matale District' ? '' : e.target.value })}
               className="w-full p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-900 dark:text-white"
             >
               {QATAR_LOCATIONS.map((loc) => (
-                <option key={loc} value={loc === 'All Qatar' ? '' : loc}>
+                <option key={loc} value={loc === 'All Matale District' ? '' : loc}>
                   {loc}
                 </option>
               ))}
@@ -163,7 +163,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
           {/* Price Range */}
           <div>
             <label className="block text-xs font-bold text-slate-900 dark:text-white mb-2 uppercase tracking-wide">
-              Price Range (QAR)
+              Price Range (Rs. / LKR)
             </label>
             <div className="grid grid-cols-2 gap-2">
               <input
@@ -245,15 +245,15 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
               className="w-full py-2.5 bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-amber-600 dark:text-amber-400 font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 transition-colors"
             >
               <Bell className="w-3.5 h-3.5" />
-              <span>Save Filter as Instant Alert (حفظ التنبيه)</span>
+              <span>Save Filter as Instant Alert</span>
             </button>
           )}
 
           <button
             onClick={onClose}
-            className="w-full py-3 bg-gradient-to-r from-[#8A1538] to-rose-700 hover:from-[#700f2b] hover:to-rose-800 text-white font-bold text-sm rounded-2xl shadow-lg transition-all"
+            className="w-full py-3 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-sm rounded-2xl shadow-lg transition-all"
           >
-            Show {totalResultsCount} Results in Qatar
+            Show {totalResultsCount} Results in Matale
           </button>
         </div>
       </div>

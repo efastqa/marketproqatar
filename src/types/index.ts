@@ -257,3 +257,44 @@ export interface SavedSearchAlert {
   notifyOnWhatsApp?: boolean;
 }
 
+export interface GoldRateData {
+  poun24k: number; // 24K Sovereign (8 grams) in LKR
+  gram24k: number; // 24K per gram in LKR
+  poun22k: number; // 22K Sovereign (8 grams) in LKR (Standard jewelry sovereign)
+  gram22k: number; // 22K per gram in LKR
+  gram18k: number; // 18K per gram in LKR
+  silverGram: number; // 925 Silver per gram in LKR
+  currency: 'LKR';
+  change24h: number; // Daily price change in LKR
+  changePercent: number; // e.g. +0.4%
+  lastUpdated: string;
+  marketStatus: 'Open' | 'Closed';
+}
+
+export interface MataleWeatherData {
+  location: string;
+  district: string;
+  province: string;
+  temperatureC: number;
+  feelsLikeC: number;
+  condition: string;
+  conditionSinhala?: string;
+  conditionIcon: string;
+  humidity: number;
+  windSpeedKmh: number;
+  precipitationMm: number;
+  uvIndex: number;
+  cloudCover: number;
+  elevationMeters: number;
+  knucklesNote: string;
+  farmingNote: string;
+  forecast: {
+    day: string;
+    tempMax: number;
+    tempMin: number;
+    condition: string;
+    rainProb: number;
+  }[];
+  lastUpdated: string;
+}
+

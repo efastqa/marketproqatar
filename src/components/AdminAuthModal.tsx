@@ -11,7 +11,7 @@ import {
   Phone, 
   Fingerprint
 } from 'lucide-react';
-import { PLATFORM_PHONE_DISPLAY } from '../data/mockData';
+import { PLATFORM_PHONE_DISPLAY, PLATFORM_WHATSAPP_LINK } from '../data/mockData';
 
 interface AdminAuthModalProps {
   isOpen: boolean;
@@ -19,9 +19,9 @@ interface AdminAuthModalProps {
   onSuccess: () => void;
 }
 
-export const ADMIN_PASSWORD_STORAGE_KEY = 'marketpro_admin_password';
-export const ADMIN_SESSION_STORAGE_KEY = 'marketpro_admin_session_auth';
-export const DEFAULT_ADMIN_PASSWORD = 'qatar2026';
+export const ADMIN_PASSWORD_STORAGE_KEY = 'ebuymatale_admin_password';
+export const ADMIN_SESSION_STORAGE_KEY = 'ebuymatale_admin_session_auth';
+export const DEFAULT_ADMIN_PASSWORD = 'matale2026';
 
 export const getStoredAdminPassword = (): string => {
   return localStorage.getItem(ADMIN_PASSWORD_STORAGE_KEY) || DEFAULT_ADMIN_PASSWORD;
@@ -119,8 +119,8 @@ export const AdminAuthModal: React.FC<AdminAuthModalProps> = ({
           isShaking ? 'animate-shake' : ''
         }`}
       >
-        {/* Qatar Maroon & Gold Header */}
-        <div className="relative bg-gradient-to-r from-[#5a0c22] via-[#8A1538] to-[#400818] p-6 text-center border-b border-amber-500/20">
+        {/* Matale Emerald & Gold Header */}
+        <div className="relative bg-gradient-to-r from-emerald-950 via-slate-900 to-emerald-950 p-6 text-center border-b border-amber-500/20">
           <button
             onClick={onClose}
             className="absolute top-4 right-4 p-2 rounded-full bg-black/30 hover:bg-black/50 text-white/80 hover:text-white transition-colors"
@@ -133,14 +133,14 @@ export const AdminAuthModal: React.FC<AdminAuthModalProps> = ({
           </div>
 
           <span className="inline-block px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-[10px] font-black tracking-wider uppercase border border-amber-400/30 mb-2">
-            Qatar Administrative Gateway • لوحة الإدارة
+            ebuymatale.lk Administrative Gateway • පරිපාලන පිවිසුම
           </span>
 
           <h2 className="text-xl font-black text-white">
             Admin Password Protection
           </h2>
-          <p className="text-xs text-rose-100 mt-1 max-w-xs mx-auto">
-            Restricted access for MarketPro Qatar marketplace moderators, finance officers & executives.
+          <p className="text-xs text-emerald-100/90 mt-1 max-w-xs mx-auto">
+            Restricted access for ebuymatale.lk marketplace moderators and administrators.
           </p>
         </div>
 
@@ -162,7 +162,6 @@ export const AdminAuthModal: React.FC<AdminAuthModalProps> = ({
                     <KeyRound className="w-3.5 h-3.5 text-amber-400" />
                     Enter Master Admin Password:
                   </span>
-                  <span className="text-[10px] text-slate-400">رمز المرور السري</span>
                 </label>
 
                 <div className="relative">
@@ -231,14 +230,14 @@ export const AdminAuthModal: React.FC<AdminAuthModalProps> = ({
             </form>
           )}
 
-          {/* Qatar Emergency WhatsApp Hotline */}
+          {/* Emergency WhatsApp Hotline */}
           <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
-            <span>Forgot Password? Contact Qatar Ops:</span>
+            <span>Forgot Password? Contact Support:</span>
             <a
-              href={`https://wa.me/97477315415?text=${encodeURIComponent('Hello MarketPro Qatar Admin Support, I need password assistance.')}`}
+              href={`${PLATFORM_WHATSAPP_LINK}&text=${encodeURIComponent('Hello ebuymatale.lk Admin Support, I need password assistance.')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#8A1538] dark:text-rose-400 font-bold hover:underline flex items-center gap-1 font-mono"
+              className="text-emerald-400 font-bold hover:underline flex items-center gap-1 font-mono"
             >
               <Phone className="w-3 h-3" />
               {PLATFORM_PHONE_DISPLAY}

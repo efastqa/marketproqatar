@@ -32,7 +32,7 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
   onClose,
   onLoginSuccess,
   initialMode = 'phone',
-  promptMessage = 'Please sign in or create an account to post your advertisement on MarketPro Qatar.',
+  promptMessage = 'Please sign in or create an account to post your advertisement on ebuymatale.lk.',
 }) => {
   const [authMethod, setAuthMethod] = useState<'phone' | 'email' | 'google'>('phone');
   const [isRegisterMode, setIsRegisterMode] = useState(false);
@@ -49,7 +49,7 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [selectedLocation, setSelectedLocation] = useState(QATAR_LOCATIONS[0] || 'Doha');
+  const [selectedLocation, setSelectedLocation] = useState(QATAR_LOCATIONS[0] || 'Matale Town');
   const [accountType, setAccountType] = useState<'individual' | 'dealer_business'>('individual');
   const [businessName, setBusinessName] = useState('');
 
@@ -59,7 +59,7 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
   const handleSendOtp = (e: React.FormEvent) => {
     e.preventDefault();
     if (!phoneNumber || phoneNumber.replace(/\D/g, '').length < 7) {
-      setOtpError('Please enter a valid Qatar phone number (+974).');
+      setOtpError('Please enter a valid Sri Lanka phone number (+94).');
       return;
     }
     setOtpError('');
@@ -85,17 +85,17 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      const cleanedPhone = phoneNumber.startsWith('+974') ? phoneNumber : `+974 ${phoneNumber.trim()}`;
+      const cleanedPhone = phoneNumber.startsWith('+94') ? phoneNumber : `+94 ${phoneNumber.trim()}`;
       const newUser: UserAccount = {
         id: `user_${Date.now()}`,
-        name: fullName || `Qatar Seller (${cleanedPhone.slice(-4)})`,
-        nameAr: fullName ? `${fullName} (قطر)` : undefined,
-        email: email || `${phoneNumber.replace(/\D/g, '')}@marketpro.qa`,
+        name: fullName || `Matale Seller (${cleanedPhone.slice(-4)})`,
+        nameAr: fullName ? `${fullName} (Matale)` : undefined,
+        email: email || `${phoneNumber.replace(/\D/g, '')}@ebuymatale.lk`,
         phone: cleanedPhone,
         whatsapp: cleanedPhone,
         avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250',
         accountType,
-        businessName: accountType === 'dealer_business' ? (businessName || 'Qatar Motors & Trading') : undefined,
+        businessName: accountType === 'dealer_business' ? (businessName || 'Matale Gems & Trading') : undefined,
         location: selectedLocation,
         locationAr: selectedLocation,
         isVerified: true,
@@ -156,15 +156,15 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
   const handleQuickDemoLogin = (type: 'qatari_local' | 'expat_dealer') => {
     const demoUser: UserAccount = type === 'qatari_local' ? {
       id: 'seller_101',
-      name: 'Sheikh Jassim Al-Thani',
-      nameAr: 'الشيخ جاسم آل ثاني',
-      email: 'jassim.althani@qatar.qa',
-      phone: '+974 5521 8899',
-      whatsapp: '+974 5521 8899',
+      name: 'Sunil Wickramasinghe',
+      nameAr: '',
+      email: 'sunil.w@ebuymatale.lk',
+      phone: '074 338 3338',
+      whatsapp: '074 338 3338',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300',
       accountType: 'individual',
-      location: 'The Pearl-Qatar',
-      locationAr: 'اللؤلؤة قطر',
+      location: 'Matale Town (Clock Tower)',
+      locationAr: '',
       isVerified: true,
       qidVerified: true,
       joinedDate: 'March 2024',
@@ -174,16 +174,16 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
       favoriteListingIds: []
     } : {
       id: 'dealer_202',
-      name: 'Lusail Luxury Motors W.L.L',
-      nameAr: 'لوسيل موتورز الفاخرة',
-      email: 'sales@lusailmotors.qa',
-      phone: '+974 4499 7700',
-      whatsapp: '+974 5533 1122',
+      name: 'Matale Royal Gems & Land Developers (Pvt) Ltd',
+      nameAr: '',
+      email: 'sales@matalegems.lk',
+      phone: '+94 66 222 3456',
+      whatsapp: '+94 77 888 9900',
       avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=300',
       accountType: 'dealer_business',
-      businessName: 'Lusail Luxury Motors W.L.L',
-      location: 'Lusail City',
-      locationAr: 'مدينة لوسيل',
+      businessName: 'Matale Royal Gems & Land Developers (Pvt) Ltd',
+      location: 'Kandy Road, Matale',
+      locationAr: '',
       isVerified: true,
       qidVerified: true,
       joinedDate: 'January 2023',
@@ -207,13 +207,13 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
       const googleUser: UserAccount = {
         id: fbUser.uid,
         name: fbUser.displayName || 'Google User',
-        email: fbUser.email || `${fbUser.uid}@marketpro.qa`,
-        phone: fbUser.phoneNumber || '+974 6677 8899',
-        whatsapp: fbUser.phoneNumber || '+974 6677 8899',
+        email: fbUser.email || `${fbUser.uid}@ebuymatale.lk`,
+        phone: fbUser.phoneNumber || '+94 77 555 1234',
+        whatsapp: fbUser.phoneNumber || '+94 77 555 1234',
         avatar: fbUser.photoURL || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=250',
         accountType: 'individual',
-        location: 'West Bay, Doha',
-        locationAr: 'الخليج الغربي، الدوحة',
+        location: 'Matale Town (Clock Tower)',
+        locationAr: '',
         isVerified: true,
         qidVerified: true,
         joinedDate: 'August 2026',
@@ -229,14 +229,14 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
       // Demo fallback if popup is closed or restricted in iframe
       const googleUser: UserAccount = {
         id: `google_${Date.now()}`,
-        name: 'Tariq Al-Mansoor',
-        email: 'tariq.mansoor@gmail.com',
-        phone: '+974 6677 8899',
-        whatsapp: '+974 6677 8899',
+        name: 'Dinesh Bandara',
+        email: 'dinesh.bandara@gmail.com',
+        phone: '+94 77 555 1234',
+        whatsapp: '+94 77 555 1234',
         avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=250',
         accountType: 'individual',
-        location: 'West Bay, Doha',
-        locationAr: 'الخليج الغربي، الدوحة',
+        location: 'Matale Town (Clock Tower)',
+        locationAr: '',
         isVerified: true,
         qidVerified: true,
         joinedDate: 'August 2026',
@@ -270,11 +270,11 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
           </div>
 
           <span className="px-3 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-400/20 text-amber-300 border border-amber-400/30 inline-flex items-center gap-1">
-            <ShieldCheck className="w-3 h-3 text-amber-400" /> Qatar Verified Seller Account
+            <ShieldCheck className="w-3 h-3 text-amber-400" /> Sri Lanka Verified Seller Account
           </span>
 
           <h2 className="text-2xl font-black tracking-tight mt-1.5">
-            Sign In to MarketPro Qatar
+            Sign In to ebuymatale.lk
           </h2>
           
           {promptMessage && (
@@ -289,17 +289,17 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
               onClick={() => { setAuthMethod('phone'); setOtpError(''); }}
               className={`flex-1 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
                 authMethod === 'phone'
-                  ? 'bg-white text-[#8A1538] shadow-md'
+                  ? 'bg-white text-emerald-800 shadow-md'
                   : 'text-white/70 hover:text-white'
               }`}
             >
-              <Smartphone className="w-3.5 h-3.5" /> Qatar SMS
+              <Smartphone className="w-3.5 h-3.5" /> SMS / WhatsApp
             </button>
             <button
               onClick={() => { setAuthMethod('email'); setOtpError(''); }}
               className={`flex-1 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
                 authMethod === 'email'
-                  ? 'bg-white text-[#8A1538] shadow-md'
+                  ? 'bg-white text-emerald-800 shadow-md'
                   : 'text-white/70 hover:text-white'
               }`}
             >
@@ -325,19 +325,19 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
                 <form onSubmit={handleSendOtp} className="space-y-4">
                   <div>
                     <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-                      Qatar Mobile Number (رقم الجوال القطري)
+                      Sri Lanka Mobile Number (දුරකථන අංකය)
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-xs font-bold text-slate-500 border-r border-slate-200 dark:border-slate-700 pr-2">
-                        🇶🇦 +974
+                        🇱🇰 +94
                       </div>
                       <input
                         type="tel"
                         required
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
-                        placeholder="5512 3456 / 3300 1122"
-                        className="w-full pl-24 pr-4 py-3 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-semibold focus:ring-2 focus:ring-[#8A1538] outline-none"
+                        placeholder="77 123 4567 / 71 889 0011"
+                        className="w-full pl-24 pr-4 py-3 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm font-semibold focus:ring-2 focus:ring-emerald-600 outline-none"
                       />
                     </div>
                     <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1.5 flex items-center gap-1">
@@ -350,7 +350,7 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
                     disabled={isLoading}
                     className="w-full py-3.5 px-4 rounded-2xl bg-[#8A1538] hover:bg-[#6c0f2b] text-white font-bold text-sm shadow-lg shadow-[#8A1538]/20 transition-all flex items-center justify-center gap-2"
                   >
-                    {isLoading ? 'Sending SMS Code...' : 'Send Verification Code (إرسال رمز التحقق)'}
+                    {isLoading ? 'Sending SMS Code...' : 'Send Verification Code '}
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </form>
@@ -396,7 +396,7 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
                     disabled={isLoading}
                     className="w-full py-3.5 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2"
                   >
-                    {isLoading ? 'Verifying...' : 'Verify & Continue (تأكيد والدخول)'}
+                    {isLoading ? 'Verifying...' : 'Verify & Continue '}
                     <CheckCircle2 className="w-4 h-4" />
                   </button>
 
@@ -431,7 +431,7 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
               {isRegisterMode && (
                 <div>
                   <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                    Full Name (الاسم الكامل)
+                    Full Name 
                   </label>
                   <div className="relative">
                     <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
@@ -449,7 +449,7 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                  Email Address (البريد الإلكتروني)
+                  Email Address 
                 </label>
                 <div className="relative">
                   <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
@@ -466,7 +466,7 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                  Password (كلمة المرور)
+                  Password 
                 </label>
                 <div className="relative">
                   <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
@@ -485,7 +485,7 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
                 <div className="space-y-3 pt-1">
                   <div>
                     <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                      Location in Qatar (المنطقة)
+                      Location in Matale District (ස්ථානය)
                     </label>
                     <select
                       value={selectedLocation}
@@ -529,7 +529,7 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
                   {accountType === 'dealer_business' && (
                     <input
                       type="text"
-                      placeholder="Company / Showroom Name (اسم المعرض / الشركة)"
+                      placeholder="Company / Showroom Name "
                       value={businessName}
                       onChange={(e) => setBusinessName(e.target.value)}
                       className="w-full px-3.5 py-2.5 rounded-2xl border border-amber-300 dark:border-amber-700 bg-slate-50 dark:bg-slate-800 text-xs focus:ring-2 focus:ring-[#8A1538] outline-none"
@@ -613,7 +613,7 @@ export const UserAuthModal: React.FC<UserAuthModalProps> = ({
         {/* Footer */}
         <div className="p-3 bg-slate-50 dark:bg-slate-800/80 border-t border-slate-200 dark:border-slate-800 text-center">
           <p className="text-[10px] text-slate-400 flex items-center justify-center gap-1">
-            <Lock className="w-3 h-3 text-emerald-500" /> Protected by Qatar Data Privacy & Consumer Protection Laws
+            <Lock className="w-3 h-3 text-emerald-500" /> Protected by Sri Lanka Personal Data Protection Act (PDPA) & SSL Encryption
           </p>
         </div>
 
