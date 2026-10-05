@@ -108,7 +108,7 @@ export const ListingCard: React.FC<ListingCardProps> = ({
         <img
           src={listing.images[currentImageIndex] || listing.images[0]}
           alt={listing.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
           loading="lazy"
         />
 
@@ -201,21 +201,21 @@ export const ListingCard: React.FC<ListingCardProps> = ({
             {copiedLink ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Share2 className="w-3.5 h-3.5" />}
           </button>
 
-          {/* Favorite Button */}
+          {/* Favorite Button with Active Bounce Animation */}
           <button
             type="button"
             onClick={(e) => {
               e.stopPropagation();
               onToggleFavorite(listing.id);
             }}
-            className={`p-2 rounded-full backdrop-blur-md transition-all shadow-md ${
+            className={`p-2 rounded-full backdrop-blur-md transition-all duration-200 shadow-md active:scale-125 ${
               isFavorite
-                ? 'bg-rose-600 text-white scale-110'
+                ? 'bg-rose-600 text-white scale-110 shadow-rose-900/30'
                 : 'bg-slate-900/70 text-white hover:bg-slate-900 hover:text-rose-400'
             }`}
             title={isFavorite ? 'Remove from saved' : 'Save listing'}
           >
-            <Heart className={`w-3.5 h-3.5 ${isFavorite ? 'fill-white' : ''}`} />
+            <Heart className={`w-3.5 h-3.5 ${isFavorite ? 'fill-white animate-pulseSubtle' : ''}`} />
           </button>
         </div>
 

@@ -900,10 +900,10 @@ export default function App() {
           <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
             <button
               onClick={() => setActiveTab('all')}
-              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all flex items-center gap-1.5 ${
+              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-1.5 ${
                 activeTab === 'all'
                   ? 'bg-emerald-600 text-white shadow-md shadow-emerald-950/20'
-                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/60'
               }`}
             >
               <LayoutGrid className="w-4 h-4" /> All Matale Ads ({listings.length})
@@ -911,10 +911,10 @@ export default function App() {
 
             <button
               onClick={() => setActiveTab('lands')}
-              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all flex items-center gap-1.5 ${
+              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-1.5 ${
                 activeTab === 'lands'
                   ? 'bg-emerald-600 text-white shadow-md'
-                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/60'
               }`}
             >
               <Trees className="w-4 h-4" /> 🌱 Lands & Estates
@@ -922,10 +922,10 @@ export default function App() {
 
             <button
               onClick={() => setActiveTab('gems')}
-              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all flex items-center gap-1.5 ${
+              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-1.5 ${
                 activeTab === 'gems'
                   ? 'bg-blue-600 text-white shadow-md'
-                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/60'
               }`}
             >
               <Sparkles className="w-4 h-4" /> 💎 Ceylon Gems
@@ -933,10 +933,10 @@ export default function App() {
 
             <button
               onClick={() => setActiveTab('properties')}
-              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all flex items-center gap-1.5 ${
+              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-1.5 ${
                 activeTab === 'properties'
                   ? 'bg-teal-600 text-white shadow-md'
-                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/60'
               }`}
             >
               <Building2 className="w-4 h-4" /> 🏡 Houses & Plots
@@ -944,10 +944,10 @@ export default function App() {
 
             <button
               onClick={() => setActiveTab('motors')}
-              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all flex items-center gap-1.5 ${
+              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-1.5 ${
                 activeTab === 'motors'
                   ? 'bg-amber-600 text-white shadow-md'
-                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/60'
               }`}
             >
               <Car className="w-4 h-4" /> 🚗 Vehicles
@@ -955,10 +955,10 @@ export default function App() {
 
             <button
               onClick={() => setActiveTab('vip')}
-              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all flex items-center gap-1.5 ${
+              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-1.5 ${
                 activeTab === 'vip'
                   ? 'bg-amber-500 text-slate-950 shadow-md'
-                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/60'
               }`}
             >
               <Crown className="w-4 h-4" /> VIP Showcase
@@ -966,10 +966,10 @@ export default function App() {
 
             <button
               onClick={() => setActiveTab('map')}
-              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all flex items-center gap-1.5 ${
+              className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-1.5 ${
                 activeTab === 'map'
                   ? 'bg-emerald-700 text-white shadow-md'
-                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/60'
               }`}
             >
               <MapIcon className="w-4 h-4" /> 🗺️ Matale Map
@@ -1035,9 +1035,9 @@ export default function App() {
 
             {filteredListings.length === 0 ? (
               listings.length === 0 ? (
-                <div className="p-10 sm:p-14 text-center bg-gradient-to-b from-white via-emerald-50/30 to-white dark:from-slate-800 dark:via-slate-800/80 dark:to-slate-800 rounded-3xl border-2 border-dashed border-emerald-500/40 dark:border-emerald-600/40 space-y-4 shadow-sm max-w-2xl mx-auto my-6">
-                  <div className="w-16 h-16 rounded-3xl bg-emerald-600/10 dark:bg-emerald-400/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto ring-8 ring-emerald-500/10">
-                    <Sparkles className="w-8 h-8" />
+                <div className="p-10 sm:p-14 text-center bg-gradient-to-b from-white via-emerald-50/30 to-white dark:from-slate-800 dark:via-slate-800/80 dark:to-slate-800 rounded-3xl border-2 border-dashed border-emerald-500/40 dark:border-emerald-600/40 space-y-4 shadow-sm max-w-2xl mx-auto my-6 animate-popIn">
+                  <div className="relative w-20 h-20 rounded-3xl bg-emerald-600/10 dark:bg-emerald-400/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto ring-8 ring-emerald-500/10 animate-ripple">
+                    <Sparkles className="w-10 h-10 animate-pulseSubtle" />
                   </div>
                   <div>
                     <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
@@ -1051,16 +1051,17 @@ export default function App() {
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
                     <button
                       onClick={() => setIsPostAdOpen(true)}
-                      className="w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-emerald-600 via-teal-700 to-emerald-600 hover:from-emerald-700 hover:to-teal-800 text-white font-extrabold text-sm rounded-2xl shadow-lg shadow-emerald-950/20 flex items-center justify-center gap-2 transform active:scale-95 transition-all"
+                      className="relative overflow-hidden w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-emerald-600 via-teal-700 to-emerald-600 hover:from-emerald-700 hover:to-teal-800 text-white font-extrabold text-sm rounded-2xl shadow-lg shadow-emerald-950/20 flex items-center justify-center gap-2 transform hover:scale-105 active:scale-95 transition-all group"
                     >
-                      <Sparkles className="w-4 h-4 text-amber-300" />
+                      <div className="absolute inset-0 w-1/2 h-full bg-white/25 transform -skew-x-12 -translate-x-full group-hover:translate-x-[300%] transition-transform duration-700 pointer-events-none"></div>
+                      <Sparkles className="w-4 h-4 text-amber-300 group-hover:rotate-12 transition-transform duration-300" />
                       <span>Post Your First Ad Now (+)</span>
                     </button>
                     <a
                       href={`https://wa.me/94743383338?text=${encodeURIComponent('Hello ebuymatale.lk! I want to publish my listing.')}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full sm:w-auto px-5 py-3 rounded-2xl bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-bold text-xs flex items-center justify-center gap-2 transition-colors"
+                      className="w-full sm:w-auto px-5 py-3 rounded-2xl bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-bold text-xs flex items-center justify-center gap-2 transition-all hover:scale-102 active:scale-95 shadow-xs"
                     >
                       <Phone className="w-4 h-4 text-emerald-600" />
                       <span>WhatsApp Support (074 338 3338)</span>
